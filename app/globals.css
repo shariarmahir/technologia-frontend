@@ -1,26 +1,235 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand palette — Blue Void + Purple accent */
+  --color-primary: #1B1464;
+  --color-primary-light: #2E21A3;
+  --color-primary-dark: #0F0B3D;
+  --color-accent: #7C3AED;
+  --color-accent-light: #A78BFA;
+  --color-background: #FFFFFF;
+  --color-surface: #F8F9FC;
+  --color-surface-alt: #F1F0FB;
+  --color-text-primary: #0F0B3D;
+  --color-text-secondary: #6B7280;
+  --color-border: #E5E7EB;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+
+  /* Fonts */
+  --font-display: var(--font-jakarta), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+
+  /* Radii */
+  --radius-glass: 14px;
+  --radius-card: 20px;
+
+  /* Shadows */
+  --shadow-glass: 0 4px 16px rgba(27, 20, 100, 0.1);
+  --shadow-glass-hover: 0 10px 32px rgba(124, 58, 237, 0.22);
+  --shadow-card: 0 4px 24px rgba(15, 11, 61, 0.06);
+  --shadow-lift: 0 18px 48px -20px rgba(15, 11, 61, 0.25);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  color-scheme: light;
 }
 
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background: rgba(124, 58, 237, 0.25);
+  color: var(--color-primary-dark);
+}
+
+/* Scrollbar styling — subtle, academic */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 11, 61, 0.15);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(27, 20, 100, 0.35);
+  background-clip: padding-box;
+}
+
+/* --- Signature glass button --- */
+.glass-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-glass);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: var(--shadow-glass), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s ease, background 0.3s ease;
+  overflow: hidden;
+  isolation: isolate;
+}
+.glass-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(27, 20, 100, 0.08));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+.glass-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glass-hover), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+.glass-button:hover::before {
+  opacity: 1;
+}
+.glass-button:active {
+  transform: translateY(0);
+  transition-duration: 0.1s;
+}
+
+.glass-button-primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(27, 20, 100, 0.92), rgba(46, 33, 163, 0.85));
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  box-shadow: 0 8px 28px rgba(27, 20, 100, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.glass-button-primary::before {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.6), rgba(167, 139, 250, 0.3));
+}
+.glass-button-primary:hover {
+  box-shadow: 0 14px 40px rgba(124, 58, 237, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.glass-button-ghost {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+.glass-button-ghost:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Glass card (used over gradients/images) */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-radius: var(--radius-card);
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.35);
+}
+
+/* Gradient mesh background for hero */
+.hero-mesh {
+  background-color: #0F0B3D;
+  background-image:
+    radial-gradient(at 18% 24%, rgba(124, 58, 237, 0.45) 0, transparent 50%),
+    radial-gradient(at 82% 12%, rgba(46, 33, 163, 0.6) 0, transparent 55%),
+    radial-gradient(at 50% 100%, rgba(167, 139, 250, 0.35) 0, transparent 55%),
+    radial-gradient(at 0% 100%, rgba(27, 20, 100, 0.9) 0, transparent 60%);
+}
+
+/* Fine grid for hero overlay */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 75%);
+}
+
+/* Soft dotted background for section accents */
+.dot-grid {
+  background-image: radial-gradient(rgba(27, 20, 100, 0.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(120deg, #1B1464 0%, #7C3AED 50%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 100%;
+  animation: gradient-pan 8s ease infinite;
+}
+
+@keyframes gradient-pan {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Floating orb for hero accents */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -30px); }
+}
+.animate-float-slow { animation: float-slow 12s ease-in-out infinite; }
+
+@keyframes float-slower {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-30px, 20px); }
+}
+.animate-float-slower { animation: float-slower 18s ease-in-out infinite; }
+
+/* Shimmer for skeletons */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #F1F0FB 0%, #E8E6F5 50%, #F1F0FB 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+/* Marquee for testimonials */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+
+/* Focus ring */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
