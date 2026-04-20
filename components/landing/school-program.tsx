@@ -10,7 +10,7 @@ import {
   CalendarDays,
   ArrowRight,
 } from "lucide-react";
-import { GlassButton } from "@/components/ui/glass-button";
+import { Button } from "@/components/ui/button";
 
 const bullets = [
   {
@@ -21,16 +21,16 @@ const bullets = [
   {
     icon: CalendarDays,
     title: "2 workshops / week · 90 min each",
-    body: "Structured, practical, tech-forward sessions that build students from basics to build-mode.",
+    body: "Structured, practical, tech-forward sessions that take students from basics to build-mode.",
   },
   {
     icon: Trophy,
     title: "Competitions & prize pools",
-    body: "National, international, Zilla & school competitions — logistics, registration & coaching.",
+    body: "National, international, Zilla and school competitions — we handle logistics, registration & coaching.",
   },
   {
     icon: Rocket,
-    title: "Mandatory ‘How to build a startup’",
+    title: "Mandatory 'How to build a startup'",
     body: "Guidance for project-based, web-dev and e-commerce ventures — supported until they run.",
   },
 ];
@@ -38,25 +38,26 @@ const bullets = [
 export function SchoolProgram() {
   return (
     <section id="school-program" className="relative py-24">
-      <div className="absolute inset-0 bg-[color:var(--color-surface)]" />
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
+      <div className="absolute inset-0 bg-white" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[color:var(--color-surface)] to-transparent" />
 
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 gap-12 px-5 sm:px-8 lg:grid-cols-[1.05fr_1fr]">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-border)] bg-white/80 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-accent)] backdrop-blur">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#BAE6FD] bg-[color:var(--color-accent-soft)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[#075985]">
             <School className="h-3.5 w-3.5" />
-            Unique contribution — Schools & Colleges
+            Unique program — Schools & Colleges
           </span>
-          <h2 className="mt-5 font-display text-[2.25rem] font-semibold leading-[1.08] tracking-tight text-[color:var(--color-primary-dark)] sm:text-[2.75rem]">
-            Building a <span className="gradient-text">big brain</span> — one
-            school at a time.
+          <h2 className="mt-5 font-display text-[2.25rem] font-semibold leading-[1.08] tracking-[-0.02em] text-[color:var(--color-primary-dark)] sm:text-[2.75rem]">
+            Running a real{" "}
+            <span className="gradient-text">project lab</span>
+            <br />
+            in every school, every week.
           </h2>
           <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-[color:var(--color-text-secondary)]">
-            We help any school or college start a real project lab, run weekly
-            workshops, organise science fairs, and cultivate winning teams. Our
-            goal: break the technology-adoption loop in Bangladesh and prepare
-            the next generation for a world-class stage.
+            We partner with schools and colleges to launch an on-campus STEM
+            program — weekly workshops, three competition-ready teams, a full
+            event calendar, and a public school profile that levels up as your
+            students win.
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -69,9 +70,9 @@ export function SchoolProgram() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: i * 0.05 }}
-                  className="rounded-2xl border border-[color:var(--color-border)] bg-white p-4 shadow-[0_4px_18px_rgba(15,11,61,0.04)]"
+                  className="group rounded-2xl border border-[color:var(--color-border)] bg-white p-4 shadow-[0_4px_18px_rgba(15,11,61,0.04)] transition-all hover:-translate-y-0.5 hover:border-[#BAE6FD] hover:shadow-[0_14px_36px_-18px_rgba(14,165,233,0.35)]"
                 >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[color:var(--color-surface-alt)] text-[color:var(--color-primary)]">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[color:var(--color-accent-soft)] text-[color:var(--color-accent)] transition-colors group-hover:bg-[color:var(--color-accent)] group-hover:text-white">
                     <Icon className="h-4 w-4" />
                   </span>
                   <p className="mt-3 font-display text-sm font-semibold text-[color:var(--color-primary-dark)]">
@@ -86,12 +87,13 @@ export function SchoolProgram() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <GlassButton href="/register" variant="primary">
-              Partner with us <ArrowRight className="h-4 w-4" />
-            </GlassButton>
-            <GlassButton href="/dashboard/school/achievements">
+            <Button href="/register" variant="primary" size="md" glow>
+              Partner with us
+              <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+            </Button>
+            <Button href="/dashboard/school/achievements" variant="outline" size="md">
               See achievement showcase
-            </GlassButton>
+            </Button>
           </div>
         </div>
 
@@ -103,9 +105,9 @@ export function SchoolProgram() {
           transition={{ duration: 0.7 }}
           className="relative"
         >
-          <div className="relative overflow-hidden rounded-[28px] border border-[#2E21A3]/40 bg-gradient-to-br from-[#0F0B3D] via-[#1B1464] to-[#2E21A3] p-7 text-white shadow-[0_30px_80px_-20px_rgba(27,20,100,0.55)]">
-            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#7C3AED]/40 blur-3xl" />
-            <div className="absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-[#A78BFA]/30 blur-3xl" />
+          <div className="relative overflow-hidden rounded-[28px] border border-[#1E40AF]/40 bg-[linear-gradient(135deg,#0A0930_0%,#1B1464_55%,#0369A1_120%)] p-7 text-white shadow-[0_30px_80px_-20px_rgba(27,20,100,0.55)]">
+            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#0EA5E9]/45 blur-3xl" />
+            <div className="absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-[#38BDF8]/30 blur-3xl" />
 
             <div className="relative flex items-center justify-between">
               <div>
@@ -115,9 +117,11 @@ export function SchoolProgram() {
                 <p className="mt-1 font-display text-lg font-semibold">
                   Dhaka Residential Model College
                 </p>
-                <p className="text-xs text-white/65">Mirpur Cantonment · Est. 1960</p>
+                <p className="text-xs text-white/65">
+                  Mirpur Cantonment · Est. 1960
+                </p>
               </div>
-              <span className="rounded-full border border-[#A78BFA]/40 bg-[#7C3AED]/30 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white">
+              <span className="rounded-full border border-[#7DD3FC]/40 bg-[#0EA5E9]/30 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white">
                 Level 07 · Innovation Hub
               </span>
             </div>
@@ -129,9 +133,12 @@ export function SchoolProgram() {
                 <span className="font-mono">71%</span>
               </div>
               <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/10">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-[#A78BFA] to-[#7C3AED]"
-                  style={{ width: "71%" }}
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "71%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.1, ease: "easeOut", delay: 0.2 }}
+                  className="h-full rounded-full bg-gradient-to-r from-[#7DD3FC] to-[#0EA5E9]"
                 />
               </div>
             </div>
@@ -144,9 +151,9 @@ export function SchoolProgram() {
               ].map(({ Icon, label, value }) => (
                 <div
                   key={label}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md"
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md transition hover:bg-white/10"
                 >
-                  <Icon className="h-4 w-4 text-[color:var(--color-accent-light)]" />
+                  <Icon className="h-4 w-4 text-[#7DD3FC]" />
                   <p className="mt-2 font-display text-xl font-semibold">
                     {value}
                   </p>
@@ -158,12 +165,12 @@ export function SchoolProgram() {
             </div>
 
             <div className="relative mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-accent-light)]">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#7DD3FC]">
                 Team of the Month
               </p>
               <div className="mt-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#A78BFA] to-[#7C3AED] font-display text-sm font-bold text-white">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#38BDF8] to-[#0EA5E9] font-display text-sm font-bold text-white">
                     V3
                   </span>
                   <div className="leading-tight">

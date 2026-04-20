@@ -4,14 +4,15 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, Languages } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
-import { GlassButton } from "@/components/ui/glass-button";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const nav = [
+  { label: "What we do", href: "/#what-we-do" },
   { label: "Services", href: "/#services" },
   { label: "School Program", href: "/#school-program" },
+  { label: "University Labs", href: "/#university-labs" },
   { label: "How it works", href: "/#how-it-works" },
-  { label: "Trust", href: "/#verified" },
 ];
 
 export function SiteHeader() {
@@ -50,9 +51,9 @@ export function SiteHeader() {
           >
             Log in
           </Link>
-          <GlassButton href="/register" variant="primary" size="sm">
+          <Button href="/register" variant="primary" size="sm">
             Get started
-          </GlassButton>
+          </Button>
         </div>
 
         <button
@@ -88,9 +89,9 @@ export function SiteHeader() {
             >
               Log in
             </Link>
-            <GlassButton href="/register" variant="primary" size="sm" className="flex-1">
+            <Button href="/register" variant="primary" size="sm" className="flex-1">
               Get started
-            </GlassButton>
+            </Button>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ const pillars = [
   {
     icon: FileCheck2,
     title: "Every academic report reviewed",
-    body: "Not just spellcheck — conceptual review, referencing, and methodology are all vetted.",
+    body: "Not just spellcheck — conceptual review, referencing and methodology are all vetted.",
   },
   {
     icon: ShieldCheck,
@@ -30,10 +30,10 @@ export function VerifiedSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-[32px] border border-[#BBF7D0] bg-gradient-to-br from-[#ECFDF5] via-white to-[#F1F0FB] p-8 sm:p-12"
+          className="relative overflow-hidden rounded-[32px] border border-[#BBF7D0] bg-gradient-to-br from-[#ECFDF5] via-white to-[#E0F2FE] p-8 sm:p-12"
         >
           <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#10B981]/10 blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-[#7C3AED]/10 blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-[#0EA5E9]/12 blur-3xl" />
 
           <div className="relative grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
             <div>
@@ -41,15 +41,17 @@ export function VerifiedSection() {
                 <ShieldCheck className="h-3.5 w-3.5" />
                 Quality assurance
               </span>
-              <h2 className="mt-5 font-display text-[2rem] font-semibold leading-[1.1] tracking-tight text-[color:var(--color-primary-dark)] sm:text-[2.5rem]">
+              <h2 className="mt-5 font-display text-[2rem] font-semibold leading-[1.1] tracking-[-0.02em] text-[color:var(--color-primary-dark)] sm:text-[2.5rem]">
                 Every academic report <br />
                 <span className="text-[#047857]">carries the verified badge.</span>
               </h2>
               <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-[color:var(--color-text-secondary)]">
-                All assignments, reports and research are reviewed by
-                <span className="font-semibold text-[color:var(--color-primary-dark)]"> Masum Hawlader</span>, Assistant
-                Professor, Department of EEE, University of Asia Pacific —
-                before they ever reach your inbox.
+                All assignments, reports and research are reviewed by{" "}
+                <span className="font-semibold text-[color:var(--color-primary-dark)]">
+                  Masum Hawlader
+                </span>
+                , Assistant Professor, Department of EEE, University of Asia
+                Pacific — before they ever reach your inbox.
               </p>
 
               <div className="mt-7 inline-flex items-center gap-4 rounded-2xl border border-[#BBF7D0] bg-white px-5 py-4 shadow-[0_14px_40px_-20px_rgba(16,185,129,0.45)]">
@@ -77,9 +79,9 @@ export function VerifiedSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.45, delay: i * 0.08 }}
-                    className="flex items-start gap-4 rounded-2xl border border-[color:var(--color-border)] bg-white/80 p-5 backdrop-blur"
+                    className="flex items-start gap-4 rounded-2xl border border-[color:var(--color-border)] bg-white/85 p-5 backdrop-blur transition hover:border-[#BAE6FD] hover:shadow-[0_14px_36px_-18px_rgba(14,165,233,0.35)]"
                   >
-                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[color:var(--color-surface-alt)] text-[color:var(--color-primary)]">
+                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[color:var(--color-accent-soft)] text-[color:var(--color-accent)]">
                       <Icon className="h-5 w-5" />
                     </span>
                     <div>

@@ -13,7 +13,7 @@ const steps = [
   {
     icon: FileEdit,
     title: "Submit request",
-    body: "Describe the work, upload files or drive links, and set your budget. We respond within an hour.",
+    body: "Describe the work, upload files or drive links, set your budget. We respond within an hour.",
   },
   {
     icon: LineChart,
@@ -23,7 +23,7 @@ const steps = [
   {
     icon: PackageCheck,
     title: "Get delivered",
-    body: "Download verified work, leave remarks, and schedule a Google Meet if you need a walkthrough.",
+    body: "Download verified work, leave remarks, book a Google Meet walkthrough if you need one.",
   },
 ];
 
@@ -46,7 +46,7 @@ export function HowItWorks() {
 
         <div className="relative mt-16 grid grid-cols-1 gap-5 md:grid-cols-4">
           {/* connector line */}
-          <div className="absolute inset-x-8 top-10 hidden h-px bg-gradient-to-r from-transparent via-[color:var(--color-border)] to-transparent md:block" />
+          <div className="absolute inset-x-8 top-10 hidden h-px bg-gradient-to-r from-transparent via-[#BAE6FD] to-transparent md:block" />
 
           {steps.map((s, i) => {
             const Icon = s.icon;
@@ -57,13 +57,13 @@ export function HowItWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="relative flex flex-col items-start"
+                className="group relative flex flex-col items-start"
               >
-                <span className="relative z-10 flex h-20 w-20 items-center justify-center rounded-2xl bg-white shadow-[0_8px_24px_rgba(15,11,61,0.08)] ring-1 ring-[color:var(--color-border)]">
-                  <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-[color:var(--color-primary)] font-mono text-[11px] font-semibold text-white">
+                <span className="relative z-10 flex h-20 w-20 items-center justify-center rounded-2xl bg-white shadow-[0_8px_24px_rgba(15,11,61,0.08)] ring-1 ring-[color:var(--color-border)] transition-all duration-300 group-hover:-translate-y-1 group-hover:ring-[#BAE6FD] group-hover:shadow-[0_18px_40px_-14px_rgba(14,165,233,0.45)]">
+                  <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-[color:var(--color-primary)] font-mono text-[11px] font-semibold text-white ring-4 ring-white">
                     0{i + 1}
                   </span>
-                  <Icon className="h-6 w-6 text-[color:var(--color-accent)]" />
+                  <Icon className="h-6 w-6 text-[color:var(--color-accent)] transition-transform duration-300 group-hover:scale-110" />
                 </span>
                 <h3 className="mt-5 font-display text-lg font-semibold tracking-tight text-[color:var(--color-primary-dark)]">
                   {s.title}

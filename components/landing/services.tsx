@@ -7,6 +7,7 @@ import {
   PenTool,
   ArrowUpRight,
   type LucideIcon,
+  CheckCircle2,
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import Link from "next/link";
@@ -17,84 +18,108 @@ type Service = {
   title: string;
   description: string;
   bullets: string[];
-  tone: "primary" | "accent" | "dark";
+  pricing: string;
+  tone: "light" | "sky" | "dark";
 };
 
 const services: Service[] = [
   {
     icon: BookOpenText,
-    tag: "Product 01 — Student",
-    title: "Academic & research services",
+    tag: "Service line 01",
+    title: "Academic & research",
     description:
-      "Assignments, reports, theses, lab reports, IEEE publications and research — delivered on time, humanised, and verified.",
+      "Assignments, theses, lab reports, IEEE publications, and research — humanised, low AI-detection, professor-verified.",
     bullets: [
-      "Low AI-detection, humanised writing",
-      "IEEE paper prep & publication support",
-      "Lab reports & deadline-critical work",
+      "Assignments, reports, theses",
+      "IEEE paper prep & submission",
+      "Research methodology review",
     ],
-    tone: "primary",
+    pricing: "From ৳1,200 / assignment",
+    tone: "light",
   },
   {
     icon: Cpu,
-    tag: "Product 02 — Projects",
-    title: "IoT, IEEE & science projects",
+    tag: "Service line 02",
+    title: "IoT & engineering projects",
     description:
-      "From science tournaments to industrial IoT — our university engineers design, build, and document end-to-end.",
+      "End-to-end IoT builds and science-fair projects — hardware, firmware, documentation, demo videos.",
     bullets: [
-      "IoT project design + hardware build",
+      "IoT hardware + firmware",
       "Science-fair / competition kits",
-      "IEEE thesis + publication pipeline",
+      "Prototype + full documentation",
     ],
-    tone: "accent",
+    pricing: "From ৳8,000 / project",
+    tone: "sky",
   },
   {
     icon: PenTool,
-    tag: "Product 03 — Content",
+    tag: "Service line 03",
     title: "Content & creative studio",
     description:
-      "Corporate content, marketing creatives, and AI-powered video — crafted by a team that balances craft with scale.",
+      "Marketing content, brand systems, and AI-powered video — writers, designers and editors in-house.",
     bullets: [
-      "Content & AI video writing",
+      "Content & AI video scripts",
       "Corporate + marketing creatives",
-      "Brand systems & visual identity",
+      "Brand systems & identity",
     ],
+    pricing: "From ৳2,500 / piece",
     tone: "dark",
   },
 ];
 
 const toneStyles = {
-  primary: {
+  light: {
     card: "bg-white border-[color:var(--color-border)]",
     icon: "bg-[color:var(--color-primary)] text-white",
     tag: "text-[color:var(--color-primary)]",
+    cta: "text-[color:var(--color-primary)] hover:text-[color:var(--color-accent)]",
+    check: "text-[color:var(--color-accent)]",
+    title: "text-[color:var(--color-primary-dark)]",
+    body: "text-[color:var(--color-text-secondary)]",
+    list: "text-[color:var(--color-text-primary)]",
+    price:
+      "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-primary)]",
   },
-  accent: {
-    card: "bg-gradient-to-br from-[#F3F0FF] to-white border-[#E0D8FF]",
+  sky: {
+    card:
+      "bg-gradient-to-br from-[#F0F9FF] to-white border-[#BAE6FD]",
     icon: "bg-[color:var(--color-accent)] text-white",
-    tag: "text-[color:var(--color-accent)]",
+    tag: "text-[#075985]",
+    cta: "text-[#075985] hover:text-[color:var(--color-primary)]",
+    check: "text-[color:var(--color-accent)]",
+    title: "text-[color:var(--color-primary-dark)]",
+    body: "text-[#0C4A6E]/80",
+    list: "text-[#0C4A6E]",
+    price: "border-[#BAE6FD] bg-white text-[#075985]",
   },
   dark: {
     card:
-      "bg-gradient-to-br from-[#0F0B3D] to-[#1B1464] border-[#2E21A3] text-white",
+      "bg-[linear-gradient(135deg,#0A0930_0%,#1B1464_50%,#0369A1_120%)] border-[#1E3A8A]/60 text-white",
     icon: "bg-white/10 text-white border border-white/20",
-    tag: "text-[color:var(--color-accent-light)]",
+    tag: "text-[#7DD3FC]",
+    cta: "text-[#7DD3FC] hover:text-white",
+    check: "text-[#7DD3FC]",
+    title: "text-white",
+    body: "text-white/70",
+    list: "text-white/85",
+    price: "border-white/15 bg-white/5 text-white",
   },
 } as const;
 
 export function Services() {
   return (
-    <section id="services" className="relative bg-white py-24">
+    <section id="services" className="relative bg-[color:var(--color-surface)] py-24">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="Service Product 01"
+          eyebrow="Pick a service line"
           title={
             <>
               Three service lines.
               <br />
-              One standard of craft.
+              <span className="gradient-text">One standard of craft.</span>
             </>
           }
-          description="International students, professionals, and brands trust technoLOgia across three tightly-run verticals."
+          description="International students, professionals and brands trust technoLOgia across three tightly-run verticals — all tracked in a single dashboard."
         />
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -105,66 +130,63 @@ export function Services() {
             return (
               <motion.div
                 key={s.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className={`group relative flex flex-col overflow-hidden rounded-[24px] border p-7 shadow-[0_10px_40px_-20px_rgba(15,11,61,0.25)] transition-transform hover:-translate-y-1 ${t.card}`}
+                transition={{ duration: 0.55, delay: i * 0.08 }}
+                className={`group relative flex flex-col overflow-hidden rounded-[24px] border p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_-20px_rgba(15,11,61,0.28)] ${t.card}`}
               >
-                <div className="flex items-center justify-between">
+                {dark && (
+                  <>
+                    <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[#0EA5E9]/35 blur-3xl" />
+                    <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-[#38BDF8]/25 blur-3xl" />
+                  </>
+                )}
+
+                <div className="relative flex items-center justify-between">
                   <span
                     className={`flex h-12 w-12 items-center justify-center rounded-2xl ${t.icon}`}
                   >
                     <Icon className="h-5 w-5" />
                   </span>
                   <span
-                    className={`font-mono text-[10px] uppercase tracking-[0.18em] ${t.tag}`}
+                    className={`font-mono text-[10px] uppercase tracking-[0.2em] ${t.tag}`}
                   >
                     {s.tag}
                   </span>
                 </div>
 
                 <h3
-                  className={`mt-6 font-display text-xl font-semibold tracking-tight ${
-                    dark ? "text-white" : "text-[color:var(--color-primary-dark)]"
-                  }`}
+                  className={`relative mt-6 font-display text-xl font-semibold tracking-tight ${t.title}`}
                 >
                   {s.title}
                 </h3>
                 <p
-                  className={`mt-2 text-sm leading-relaxed ${
-                    dark ? "text-white/70" : "text-[color:var(--color-text-secondary)]"
-                  }`}
+                  className={`relative mt-2 text-sm leading-relaxed ${t.body}`}
                 >
                   {s.description}
                 </p>
 
-                <ul
-                  className={`mt-5 space-y-2 text-sm ${
-                    dark ? "text-white/80" : "text-[color:var(--color-text-primary)]"
-                  }`}
-                >
+                <ul className={`relative mt-5 space-y-2 text-sm ${t.list}`}>
                   {s.bullets.map((b) => (
                     <li key={b} className="flex items-start gap-2">
-                      <span
-                        className={`mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full ${
-                          dark
-                            ? "bg-[color:var(--color-accent-light)]"
-                            : "bg-[color:var(--color-accent)]"
-                        }`}
+                      <CheckCircle2
+                        className={`mt-0.5 h-4 w-4 flex-shrink-0 ${t.check}`}
                       />
-                      {b}
+                      <span>{b}</span>
                     </li>
                   ))}
                 </ul>
 
+                <div
+                  className={`relative mt-6 inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] ${t.price}`}
+                >
+                  {s.pricing}
+                </div>
+
                 <Link
                   href="/register"
-                  className={`mt-7 inline-flex items-center gap-1.5 text-sm font-semibold ${
-                    dark
-                      ? "text-[color:var(--color-accent-light)] hover:text-white"
-                      : "text-[color:var(--color-primary)] hover:text-[color:var(--color-accent)]"
-                  }`}
+                  className={`relative mt-5 inline-flex items-center gap-1.5 text-sm font-semibold ${t.cta}`}
                 >
                   Request this service
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
