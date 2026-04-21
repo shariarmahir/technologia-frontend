@@ -10,12 +10,14 @@ import {
   Building2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BackgroundCanvas } from "@/components/landing/background-canvas";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="hero-mesh absolute inset-0" />
       <div className="hero-grid absolute inset-0 opacity-90" />
+      <BackgroundCanvas />
       <div className="orb h-[520px] w-[520px] bg-[#0EA5E9]/60 left-[-120px] top-[-100px] animate-float-slow" />
       <div className="orb h-[420px] w-[420px] bg-[#2E21A3]/60 right-[-80px] top-[40px] animate-float-slower" />
 
