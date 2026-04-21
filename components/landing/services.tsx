@@ -94,15 +94,15 @@ const toneStyles = {
   },
   dark: {
     card:
-      "bg-[linear-gradient(135deg,#0A0930_0%,#1B1464_50%,#0369A1_120%)] border-[#1E3A8A]/60 text-white",
-    icon: "bg-white/10 text-white border border-white/20",
-    tag: "text-[#7DD3FC]",
-    cta: "text-[#7DD3FC] hover:text-white",
-    check: "text-[#7DD3FC]",
+      "bg-[linear-gradient(135deg,#0EA5E9_0%,#38BDF8_55%,#7DD3FC_110%)] border-[#0EA5E9]/50",
+    icon: "bg-white/20 text-white border border-white/30",
+    tag: "text-white/80",
+    cta: "text-white hover:text-white/80",
+    check: "text-white",
     title: "text-white",
-    body: "text-white/70",
+    body: "text-white/80",
     list: "text-white/85",
-    price: "border-white/15 bg-white/5 text-white",
+    price: "border-white/25 bg-white/15 text-white",
   },
 } as const;
 
@@ -138,8 +138,8 @@ export function Services() {
               >
                 {dark && (
                   <>
-                    <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[#0EA5E9]/35 blur-3xl" />
-                    <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-[#38BDF8]/25 blur-3xl" />
+                    <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[#F59E0B]/40 blur-3xl" />
+                    <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-[#FCD34D]/30 blur-3xl" />
                   </>
                 )}
 

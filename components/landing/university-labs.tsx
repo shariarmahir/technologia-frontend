@@ -106,21 +106,21 @@ export function UniversityLabs() {
                 transition={{ duration: 0.55, delay: i * 0.08 }}
                 className={`group relative flex flex-col overflow-hidden rounded-[24px] border p-7 transition-all duration-300 hover:-translate-y-1.5 ${
                   dark
-                    ? "border-[#1E40AF]/60 bg-[linear-gradient(135deg,#0A0930_0%,#1B1464_55%,#0369A1_120%)] text-white shadow-[0_30px_80px_-20px_rgba(27,20,100,0.45)]"
+                    ? "border-[#0EA5E9]/50 bg-[linear-gradient(135deg,#0EA5E9_0%,#38BDF8_55%,#7DD3FC_110%)] shadow-[0_30px_80px_-20px_rgba(14,165,233,0.45)]"
                     : "border-[#BAE6FD] bg-white/90 shadow-[0_16px_40px_-20px_rgba(14,165,233,0.35)] hover:shadow-[0_24px_60px_-18px_rgba(14,165,233,0.5)]"
                 }`}
               >
                 {dark && (
                   <>
                     <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[#0EA5E9]/40 blur-3xl" />
-                    <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-[#38BDF8]/25 blur-3xl" />
+                    <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-[#7DD3FC]/30 blur-3xl" />
                   </>
                 )}
 
                 <span
                   className={`relative flex h-12 w-12 items-center justify-center rounded-2xl ${
                     dark
-                      ? "border border-white/15 bg-white/10 text-[#7DD3FC]"
+                      ? "border border-white/30 bg-white/20 text-white"
                       : "bg-[color:var(--color-accent)] text-white"
                   }`}
                 >
@@ -129,7 +129,7 @@ export function UniversityLabs() {
 
                 <span
                   className={`relative mt-5 font-mono text-[10px] uppercase tracking-[0.22em] ${
-                    dark ? "text-[#7DD3FC]" : "text-[#075985]"
+                    dark ? "text-white/80" : "text-[#075985]"
                   }`}
                 >
                   Core feature 0{i + 1}

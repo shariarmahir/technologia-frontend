@@ -13,23 +13,22 @@ export function CtaSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-[32px] border border-[#1E40AF]/50 bg-[linear-gradient(135deg,#0A0930_0%,#1B1464_50%,#0369A1_120%)] px-6 py-16 text-center sm:px-12"
+          className="relative overflow-hidden rounded-[32px] border border-[#0EA5E9]/50 bg-[linear-gradient(135deg,#0EA5E9_0%,#38BDF8_55%,#7DD3FC_110%)] px-6 py-16 text-center sm:px-12"
         >
-          <div className="hero-grid absolute inset-0 opacity-60" />
-          <div className="absolute -right-20 top-0 h-72 w-72 rounded-full bg-[#0EA5E9]/45 blur-3xl" />
-          <div className="absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-[#38BDF8]/35 blur-3xl" />
+          <div className="absolute -right-20 top-0 h-72 w-72 rounded-full bg-[#0EA5E9]/40 blur-3xl" />
+          <div className="absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-[#7DD3FC]/30 blur-3xl" />
 
           <div className="relative mx-auto max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-white/80 backdrop-blur">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-white/90 backdrop-blur">
               <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#38BDF8] opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#0EA5E9]" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
               </span>
               Ready when you are
             </span>
             <h2 className="mt-5 font-display text-[2.25rem] font-semibold leading-[1.08] tracking-[-0.02em] text-white sm:text-[3rem]">
               Start shipping your best work{" "}
-              <span className="bg-gradient-to-r from-[#7DD3FC] to-white bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
                 — today.
               </span>
             </h2>
@@ -39,11 +38,11 @@ export function CtaSection() {
               this is the time to jump.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button href="/register" variant="sky" size="lg" glow>
+              <Button href="/register" variant="primary" size="lg" glow>
                 Create your account
                 <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
               </Button>
-              <Button href="/login" variant="ghost" size="lg">
+              <Button href="/login" variant="outline" size="lg">
                 I already have one
               </Button>
             </div>

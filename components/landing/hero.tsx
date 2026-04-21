@@ -3,174 +3,324 @@
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Sparkles,
   ShieldCheck,
   Zap,
   GraduationCap,
   Building2,
+  Sparkles,
+  CheckCircle2,
+  Clock,
+  TrendingUp,
+  Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BackgroundCanvas } from "@/components/landing/background-canvas";
 
+const statCards = [
+  { k: "2,400+", v: "Orders delivered", icon: TrendingUp },
+  { k: "48 hr", v: "Avg. turnaround", icon: Clock },
+  { k: "18", v: "Partner schools", icon: Building2 },
+  { k: "96%", v: "Verified pass rate", icon: Star },
+];
+
+const orderItems = [
+  { label: "IEEE Paper — RF Circuit Analysis", status: "Verified", hex: "#10B981" },
+  { label: "IoT Smart-Home Kit + Firmware", status: "In Progress", hex: "#38BDF8" },
+  { label: "Brand Deck — TechNova Ltd.", status: "Submitted", hex: "#A78BFA" },
+];
+
+function DashboardMockup({ className = "" }: { className?: string }) {
+  return (
+    <div className={`relative ${className}`}>
+      {/* Glow halo */}
+      <div className="absolute inset-4 rounded-[32px] bg-[#0EA5E9]/20 blur-3xl pointer-events-none" />
+
+      {/* Card */}
+      <div className="relative overflow-hidden rounded-[24px] border border-white/15 bg-[#0D0D3A]/80 shadow-[0_32px_80px_-16px_rgba(14,165,233,0.45)] backdrop-blur-2xl">
+        {/* macOS chrome */}
+        <div className="flex items-center justify-between border-b border-white/8 px-4 py-3 sm:px-5 sm:py-3.5">
+          <div className="flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#28CA41]" />
+          </div>
+          <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/35 sm:text-[10px]">
+            technologia · live orders
+          </span>
+          <span className="flex items-center gap-1.5 text-[10px] text-[#34D399]">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#34D399]" />
+            Live
+          </span>
+        </div>
+
+        <div className="space-y-3 p-4 sm:space-y-4 sm:p-5">
+          {/* Mini stat row */}
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            {[
+              { label: "Active", value: "12", color: "text-[#38BDF8]" },
+              { label: "Verified", value: "8", color: "text-[#34D399]" },
+              { label: "This week", value: "৳24k", color: "text-[#FBBF24]" },
+            ].map((s) => (
+              <div key={s.label} className="rounded-xl border border-white/8 bg-white/4 p-2.5 text-center sm:p-3">
+                <p className={`font-display text-base font-bold sm:text-lg ${s.color}`}>{s.value}</p>
+                <p className="mt-0.5 text-[8px] uppercase tracking-wider text-white/40 sm:text-[9px]">{s.label}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Order list */}
+          <div className="space-y-1.5 sm:space-y-2">
+            <p className="px-1 font-mono text-[8px] uppercase tracking-[0.2em] text-white/35 sm:text-[9px]">
+              Recent orders
+            </p>
+            {orderItems.map((o, i) => (
+              <motion.div
+                key={o.label}
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
+                className="flex items-center justify-between rounded-xl border border-white/8 bg-white/4 px-3 py-2 sm:px-3.5 sm:py-2.5"
+              >
+                <div className="flex min-w-0 items-center gap-2">
+                  <CheckCircle2 className="h-3 w-3 flex-shrink-0 text-white/30 sm:h-3.5 sm:w-3.5" />
+                  <span className="truncate text-[10.5px] text-white/70 sm:text-[11.5px]">{o.label}</span>
+                </div>
+                <span
+                  className="ml-2 flex-shrink-0 rounded-full border px-1.5 py-0.5 text-[8.5px] font-medium sm:px-2 sm:text-[9.5px]"
+                  style={{ color: o.hex, borderColor: `${o.hex}40`, backgroundColor: `${o.hex}18` }}
+                >
+                  {o.status}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Progress bar */}
+          <div className="rounded-xl border border-white/8 bg-white/4 p-3 sm:p-3.5">
+            <div className="flex items-center justify-between text-[9px] sm:text-[10px]">
+              <span className="text-white/50">Monthly goal</span>
+              <span className="font-mono font-semibold text-[#38BDF8]">78%</span>
+            </div>
+            <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/8">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: "78%" }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.9 }}
+                className="h-full rounded-full bg-gradient-to-r from-[#0EA5E9] to-[#7DD3FC]"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating verified badge */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.85, y: 8 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.85 }}
+        className="absolute -bottom-4 -left-4 rounded-2xl border border-white/15 bg-[#0D0D3A]/90 px-3.5 py-2.5 shadow-[0_12px_32px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:-bottom-5 sm:-left-8 sm:px-4 sm:py-3"
+      >
+        <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#34D399] sm:text-[9px]">Professor verified</p>
+        <p className="mt-0.5 font-display text-[11px] font-semibold text-white sm:text-[12px]">Masum Hawlader · UAP</p>
+      </motion.div>
+
+      {/* Floating stat badge */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.85, y: -8 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.0 }}
+        className="absolute -right-3 top-6 rounded-2xl border border-[#0EA5E9]/30 bg-[#0EA5E9]/15 px-3 py-2.5 shadow-[0_12px_32px_rgba(14,165,233,0.3)] backdrop-blur-xl sm:-right-6 sm:top-10 sm:px-4 sm:py-3"
+      >
+        <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#7DD3FC] sm:text-[9px]">Delivered</p>
+        <p className="mt-0.5 font-display text-lg font-bold text-white sm:text-xl">2,400+</p>
+      </motion.div>
+    </div>
+  );
+}
+
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-[#0A0930]">
+      {/* Background layers */}
       <div className="hero-mesh absolute inset-0" />
-      <div className="hero-grid absolute inset-0 opacity-90" />
+      <div className="hero-grid absolute inset-0 opacity-60" />
       <BackgroundCanvas />
-      <div className="orb h-[520px] w-[520px] bg-[#0EA5E9]/60 left-[-120px] top-[-100px] animate-float-slow" />
-      <div className="orb h-[420px] w-[420px] bg-[#2E21A3]/60 right-[-80px] top-[40px] animate-float-slower" />
 
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center px-5 pb-28 pt-20 text-center sm:px-8 md:pt-28">
-        {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-md"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#38BDF8] opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0EA5E9]" />
-          </span>
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/90">
-            Bangladesh&rsquo;s academic + project delivery platform
-          </span>
-        </motion.div>
+      {/* Orbs — scaled down on mobile */}
+      <div className="orb h-[300px] w-[300px] bg-[#0EA5E9]/30 left-[-80px] top-[-80px] animate-float-slow sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] lg:left-[-180px] lg:top-[-160px]" />
+      <div className="orb h-[260px] w-[260px] bg-[#2E21A3]/50 right-[-60px] top-[-40px] animate-float-slower sm:h-[380px] sm:w-[380px] lg:h-[500px] lg:w-[500px] lg:right-[-100px]" />
+      <div className="orb hidden h-[300px] w-[300px] bg-[#7C3AED]/25 left-[30%] bottom-[-80px] animate-float-slow sm:block" />
 
-        {/* Headline — clarity-first */}
-        <motion.h1
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-6 max-w-5xl font-display text-[2.5rem] font-semibold leading-[1.03] tracking-[-0.025em] text-white sm:text-[3.5rem] md:text-[4.5rem]"
-        >
-          We build the{" "}
-          <span className="relative inline-block whitespace-nowrap">
-            <span className="bg-gradient-to-r from-[#38BDF8] via-[#7DD3FC] to-white bg-clip-text text-transparent">
-              work you need
+      {/* Main content — 16:6 on desktop via min-h, fluid on smaller screens */}
+      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-stretch px-5 sm:px-8 lg:min-h-[37.5vw] lg:max-h-[560px] lg:flex-row lg:items-center lg:gap-12 xl:gap-20">
+
+        {/* ── LEFT COLUMN ── */}
+        <div className="flex flex-1 flex-col items-start justify-center pt-12 pb-8 sm:pt-16 sm:pb-10 lg:py-14">
+
+          {/* Eyebrow pill */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/20 bg-white/8 px-3.5 py-1.5 backdrop-blur-md sm:px-4"
+          >
+            <span className="relative flex h-2 w-2 flex-shrink-0">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#38BDF8] opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0EA5E9]" />
             </span>
-            <svg
-              className="absolute -bottom-2 left-0 h-2 w-full"
-              viewBox="0 0 200 8"
-              fill="none"
-            >
-              <path
-                d="M2 6 Q 50 1, 100 4 T 198 4"
-                stroke="#38BDF8"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </span>
-          —
-          <br />
-          so you can ship, win, and graduate.
-        </motion.h1>
+            <span className="truncate font-mono text-[10px] uppercase tracking-[0.15em] text-white/85 sm:text-[11px] sm:tracking-[0.18em]">
+              Bangladesh&rsquo;s academic + project delivery platform
+            </span>
+          </motion.div>
 
-        {/* Value prop — explicit list of what we deliver */}
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-7 max-w-3xl text-[15px] leading-relaxed text-white/80 sm:text-[17px]"
-        >
-          A single platform that delivers{" "}
-          <span className="font-semibold text-white">
-            assignments, theses, IEEE papers, IoT hardware, content studios
-          </span>
-          {" "}— and runs a{" "}
-          <span className="font-semibold text-white">
-            weekly STEM program
-          </span>
-          {" "}in schools and colleges. Every academic report is verified by a
-          university professor before it reaches you.
-        </motion.p>
-
-        {/* Audience chips — instantly tells visitors "this is for me" */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.28 }}
-          className="mt-7 flex flex-wrap items-center justify-center gap-2"
-        >
-          {[
-            { icon: GraduationCap, label: "For students" },
-            { icon: Zap, label: "For projects" },
-            { icon: Building2, label: "For schools" },
-            { icon: Sparkles, label: "For brands" },
-          ].map((a) => {
-            const Icon = a.icon;
-            return (
-              <span
-                key={a.label}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80 backdrop-blur-md transition hover:bg-white/10 hover:text-white"
-              >
-                <Icon className="h-3.5 w-3.5 text-[#7DD3FC]" />
-                {a.label}
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.1 }}
+            className="mt-5 font-display text-[2rem] font-semibold leading-[1.05] tracking-[-0.025em] text-white sm:mt-6 sm:text-[2.9rem] md:text-[3.4rem] lg:text-[3.2rem] xl:text-[3.8rem]"
+          >
+            We build the{" "}
+            <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-[#38BDF8] via-[#7DD3FC] to-white bg-clip-text text-transparent">
+                work you need
               </span>
-            );
-          })}
-        </motion.div>
+              <svg
+                className="absolute -bottom-1 left-0 h-[3px] w-full"
+                viewBox="0 0 200 4"
+                fill="none"
+                preserveAspectRatio="none"
+              >
+                <path d="M0 3 Q50 0 100 2 T200 2" stroke="url(#heroU)" strokeWidth="2.5" strokeLinecap="round" />
+                <defs>
+                  <linearGradient id="heroU" x1="0" x2="200" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#38BDF8" />
+                    <stop offset="1" stopColor="#7DD3FC" stopOpacity=".4" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <br className="hidden sm:block" />
+            {" "}so you can{" "}
+            <span className="bg-gradient-to-r from-white/90 to-white/55 bg-clip-text text-transparent">
+              ship, win &amp; graduate.
+            </span>
+          </motion.h1>
 
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.36 }}
-          className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
-        >
-          <Button href="/register" variant="sky" size="lg" glow>
-            Start a request
-            <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-          </Button>
-          <Button href="/#what-we-do" variant="ghost" size="lg">
-            See what we deliver
-          </Button>
-        </motion.div>
+          {/* Sub-copy */}
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.2 }}
+            className="mt-4 max-w-xl text-[14px] leading-relaxed text-white/60 sm:mt-5 sm:text-[15px] lg:text-[15px] xl:text-[16px]"
+          >
+            Assignments, theses, IEEE papers, IoT hardware, brand content — and a
+            weekly{" "}
+            <span className="font-medium text-white/85">STEM program in schools.</span>{" "}
+            Every academic report verified by a university professor.
+          </motion.p>
 
-        {/* Trust line */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.48 }}
-          className="mt-10 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 backdrop-blur-md"
-        >
-          <ShieldCheck className="h-3.5 w-3.5 text-[#34D399]" />
-          <span className="text-xs text-white/80">
-            Academic work verified by{" "}
-            <span className="font-semibold text-white">Masum Hawlader</span>
-            , Asst. Professor, EEE — University of Asia Pacific
-          </span>
-        </motion.div>
+          {/* Audience chips */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.28 }}
+            className="mt-5 flex flex-wrap gap-2 sm:mt-6"
+          >
+            {[
+              { icon: GraduationCap, label: "Students" },
+              { icon: Zap, label: "Projects" },
+              { icon: Building2, label: "Schools" },
+              { icon: Sparkles, label: "Brands" },
+            ].map((a) => {
+              const Icon = a.icon;
+              return (
+                <span
+                  key={a.label}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/6 px-3 py-1.5 text-[11px] font-medium text-white/65 backdrop-blur-md transition hover:bg-white/12 hover:text-white sm:text-[12px]"
+                >
+                  <Icon className="h-3 w-3 text-[#7DD3FC] sm:h-3.5 sm:w-3.5" />
+                  {a.label}
+                </span>
+              );
+            })}
+          </motion.div>
 
-        {/* Stats strip */}
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.36 }}
+            className="mt-6 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center"
+          >
+            <Button href="/register" variant="sky" size="lg" glow>
+              Start a request
+              <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+            </Button>
+            <Button href="/#what-we-do" variant="ghost" size="lg">
+              See what we deliver
+            </Button>
+          </motion.div>
+
+          {/* Trust badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.46 }}
+            className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-3 py-1.5 backdrop-blur-md sm:mt-6 sm:px-3.5"
+          >
+            <ShieldCheck className="h-3.5 w-3.5 flex-shrink-0 text-[#34D399]" />
+            <span className="text-[11px] text-white/65 sm:text-[12px]">
+              Verified by{" "}
+              <span className="font-semibold text-white">Masum Hawlader</span>
+              , Asst. Prof. EEE — UAP
+            </span>
+          </motion.div>
+        </div>
+
+        {/* ── RIGHT COLUMN — Dashboard Mockup — hidden on mobile, visible md+ ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 grid w-full max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/15 bg-white/5 backdrop-blur-xl sm:grid-cols-4"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="hidden pb-10 pt-4 md:block md:w-full md:max-w-[420px] md:pb-12 lg:w-[440px] lg:flex-shrink-0 lg:py-14 xl:w-[480px]"
         >
-          {[
-            { k: "2,400+", v: "Orders delivered" },
-            { k: "48 hr", v: "Avg. turnaround" },
-            { k: "18", v: "Partner schools" },
-            { k: "96%", v: "Verified pass rate" },
-          ].map((s) => (
-            <div
-              key={s.v}
-              className="bg-[#0A0930]/40 p-5 text-left backdrop-blur-md"
-            >
-              <p className="font-display text-2xl font-semibold text-white">
-                {s.k}
-              </p>
-              <p className="mt-1 text-[11px] uppercase tracking-wider text-white/60">
-                {s.v}
-              </p>
-            </div>
-          ))}
+          <DashboardMockup />
         </motion.div>
       </div>
+
+      {/* ── Compact mockup on mobile — shown below text, above stats ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.4 }}
+        className="relative mx-auto w-full max-w-sm px-5 pb-10 md:hidden"
+      >
+        <DashboardMockup />
+      </motion.div>
+
+      {/* ── Stats strip ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.55 }}
+        className="relative border-t border-white/8"
+      >
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-2 divide-x divide-y divide-white/8 sm:grid-cols-4 sm:divide-y-0">
+          {statCards.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div key={s.v} className="flex items-center gap-3 px-5 py-4 sm:px-6 sm:py-5 lg:px-8">
+                <Icon className="h-4 w-4 flex-shrink-0 text-[#38BDF8]/70" />
+                <div>
+                  <p className="font-display text-lg font-semibold text-white sm:text-xl">{s.k}</p>
+                  <p className="text-[9px] uppercase tracking-wider text-white/40 sm:text-[10px]">{s.v}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </motion.div>
     </section>
   );
 }

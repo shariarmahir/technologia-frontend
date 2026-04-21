@@ -105,9 +105,9 @@ export function SchoolProgram() {
           transition={{ duration: 0.7 }}
           className="relative"
         >
-          <div className="relative overflow-hidden rounded-[28px] border border-[#1E40AF]/40 bg-[linear-gradient(135deg,#0A0930_0%,#1B1464_55%,#0369A1_120%)] p-7 text-white shadow-[0_30px_80px_-20px_rgba(27,20,100,0.55)]">
-            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#0EA5E9]/45 blur-3xl" />
-            <div className="absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-[#38BDF8]/30 blur-3xl" />
+          <div className="relative overflow-hidden rounded-[28px] border border-[#0EA5E9]/40 bg-[linear-gradient(135deg,#0EA5E9_0%,#38BDF8_55%,#7DD3FC_120%)] p-7 text-white shadow-[0_30px_80px_-20px_rgba(14,165,233,0.45)]">
+            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#0EA5E9]/40 blur-3xl" />
+            <div className="absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-[#7DD3FC]/30 blur-3xl" />
 
             <div className="relative flex items-center justify-between">
               <div>
@@ -121,7 +121,7 @@ export function SchoolProgram() {
                   Mirpur Cantonment · Est. 1960
                 </p>
               </div>
-              <span className="rounded-full border border-[#7DD3FC]/40 bg-[#0EA5E9]/30 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white">
+              <span className="rounded-full border border-white/30 bg-white/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white">
                 Level 07 · Innovation Hub
               </span>
             </div>
@@ -132,13 +132,13 @@ export function SchoolProgram() {
                 <span>XP · 2,840 / 4,000</span>
                 <span className="font-mono">71%</span>
               </div>
-              <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/10">
+              <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/20">
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: "71%" }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.1, ease: "easeOut", delay: 0.2 }}
-                  className="h-full rounded-full bg-gradient-to-r from-[#7DD3FC] to-[#0EA5E9]"
+                  className="h-full rounded-full bg-gradient-to-r from-white to-white/70"
                 />
               </div>
             </div>
@@ -151,30 +151,30 @@ export function SchoolProgram() {
               ].map(({ Icon, label, value }) => (
                 <div
                   key={label}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md transition hover:bg-white/10"
+                  className="rounded-2xl border border-white/20 bg-white/15 p-4 backdrop-blur-md transition hover:bg-white/25"
                 >
-                  <Icon className="h-4 w-4 text-[#7DD3FC]" />
-                  <p className="mt-2 font-display text-xl font-semibold">
+                  <Icon className="h-4 w-4 text-white" />
+                  <p className="mt-2 font-display text-xl font-semibold text-white">
                     {value}
                   </p>
-                  <p className="text-[10px] uppercase tracking-wider text-white/55">
+                  <p className="text-[10px] uppercase tracking-wider text-white/60">
                     {label}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="relative mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#7DD3FC]">
+            <div className="relative mt-6 rounded-2xl border border-white/20 bg-white/15 p-4 backdrop-blur-md">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white">
                 Team of the Month
               </p>
               <div className="mt-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#38BDF8] to-[#0EA5E9] font-display text-sm font-bold text-white">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/30 font-display text-sm font-bold text-white">
                     V3
                   </span>
                   <div className="leading-tight">
-                    <p className="font-display text-sm font-semibold">
+                    <p className="font-display text-sm font-semibold text-white">
                       Team Voltaire-3
                     </p>
                     <p className="text-[11px] text-white/60">
@@ -182,7 +182,7 @@ export function SchoolProgram() {
                     </p>
                   </div>
                 </div>
-                <span className="rounded-full bg-[#10B981] px-2.5 py-1 text-[10px] font-semibold">
+                <span className="rounded-full bg-[#10B981] px-2.5 py-1 text-[10px] font-semibold text-white">
                   + 320 XP
                 </span>
               </div>

@@ -111,12 +111,12 @@ const toneStyles = {
   },
   dark: {
     card:
-      "bg-[linear-gradient(135deg,#0A0930_0%,#1B1464_50%,#0369A1_110%)] border-[#1E3A8A]/60 text-white",
-    iconWrap: "bg-white/10 text-[#7DD3FC] border border-white/15",
-    eyebrow: "text-[#7DD3FC]",
+      "bg-[linear-gradient(135deg,#0EA5E9_0%,#38BDF8_55%,#7DD3FC_110%)] border-[#0EA5E9]/50",
+    iconWrap: "bg-white/20 text-white border border-white/30",
+    eyebrow: "text-white/80",
     title: "text-white",
-    body: "text-white/75",
-    chip: "border-white/15 bg-white/5 text-white/90",
+    body: "text-white/80",
+    chip: "border-white/25 bg-white/15 text-white",
   },
 } as const;
 
@@ -153,8 +153,8 @@ export function WhatWeDo() {
               >
                 {dark && (
                   <>
-                    <div className="absolute -right-24 -top-20 h-60 w-60 rounded-full bg-[#0EA5E9]/30 blur-3xl" />
-                    <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-[#38BDF8]/20 blur-3xl" />
+                    <div className="absolute -right-24 -top-20 h-60 w-60 rounded-full bg-white/20 blur-3xl" />
+                    <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-[#7DD3FC]/30 blur-3xl" />
                   </>
                 )}
 
