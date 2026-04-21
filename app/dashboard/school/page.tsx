@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   Users2,
   Trophy,
@@ -8,8 +9,8 @@ import {
   Rocket,
   CalendarDays,
   ArrowRight,
+  Zap,
 } from "lucide-react";
-import Link from "next/link";
 import { PageHeader } from "@/components/layout/page-header";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { LevelCard } from "@/components/dashboard/level-card";
@@ -29,15 +30,21 @@ const alerts = [
   },
   {
     title: "Startup idea contest — 3 teams have submitted",
-    body: "Review submissions before Thursday&rsquo;s session.",
+    body: "Review submissions before Thursday's session.",
     tone: "warning" as const,
   },
 ];
 
 const toneMap = {
-  accent: "border-[color:var(--color-accent)]/30 bg-[#F3F0FF]",
+  accent: "border-[#BAE6FD] bg-[#E0F2FE]",
   primary: "border-[color:var(--color-primary)]/20 bg-[color:var(--color-surface)]",
   warning: "border-[#FDE68A] bg-[#FEF3C7]",
+};
+
+const toneTitle = {
+  accent: "text-[#075985]",
+  primary: "text-[color:var(--color-primary-dark)]",
+  warning: "text-[#92400E]",
 };
 
 export default function SchoolOverview() {
@@ -72,7 +79,12 @@ export default function SchoolOverview() {
             value="9 / 12"
             icon={GraduationCap}
           />
-          <StatCard label="Students reached" value="124" icon={Rocket} />
+          <StatCard
+            tone="primary"
+            label="Students reached"
+            value="124"
+            icon={Rocket}
+          />
         </div>
       </div>
 
@@ -82,24 +94,25 @@ export default function SchoolOverview() {
             <div>
               <CardTitle>Teams on the ground</CardTitle>
               <p className="mt-1 text-sm text-[color:var(--color-text-secondary)]">
-                3 technoLOgia-built teams — each with a leader, EEE and CSE member.
+                3 technoLOgia-built teams — each with a leader, EEE and CSE
+                member.
               </p>
             </div>
             <Link
               href="/dashboard/school/teams"
-              className="text-sm font-semibold text-[color:var(--color-primary)]"
+              className="text-sm font-semibold text-[color:var(--color-primary)] transition hover:text-[color:var(--color-accent)]"
             >
               Manage →
             </Link>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="space-y-3 p-5">
             {schoolTeams.map((t) => (
               <div
                 key={t.id}
-                className="flex items-center justify-between rounded-2xl border border-[color:var(--color-border)] bg-white p-4 transition hover:border-[color:var(--color-accent)]/40"
+                className="flex items-center justify-between rounded-2xl border border-[color:var(--color-border)] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#BAE6FD] hover:shadow-[0_10px_28px_-16px_rgba(14,165,233,0.4)]"
               >
                 <div className="flex items-center gap-4">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1B1464] to-[#7C3AED] font-display text-sm font-bold text-white">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#1B1464_0%,#0EA5E9_100%)] font-display text-sm font-bold text-white shadow-[0_8px_20px_-8px_rgba(14,165,233,0.5)]">
                     {t.name.split("-")[0].slice(0, 2)}
                   </span>
                   <div className="leading-tight">
@@ -112,11 +125,11 @@ export default function SchoolOverview() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3 text-xs">
-                  <span className="rounded-full bg-[color:var(--color-surface-alt)] px-2.5 py-1 font-mono font-semibold text-[color:var(--color-accent)]">
-                    {t.xp} XP
+                  <span className="flex items-center gap-1 rounded-full border border-[#BAE6FD] bg-[color:var(--color-accent-soft)] px-2.5 py-1 font-mono font-semibold text-[#075985]">
+                    <Zap className="h-3 w-3" /> {t.xp} XP
                   </span>
                   <span className="inline-flex items-center gap-1 text-[color:var(--color-text-secondary)]">
-                    <Trophy className="h-3.5 w-3.5" /> {t.wins}
+                    <Trophy className="h-3.5 w-3.5 text-[#FCD34D]" /> {t.wins}
                   </span>
                 </div>
               </div>
@@ -125,21 +138,21 @@ export default function SchoolOverview() {
         </Card>
 
         <Card>
-          <CardHeader className="flex items-center justify-between">
-            <div>
-              <CardTitle className="flex items-center gap-2">
-                <Bell className="h-4 w-4 text-[color:var(--color-accent)]" />
-                Alerts & updates
-              </CardTitle>
-            </div>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Bell className="h-4 w-4 text-[color:var(--color-accent)]" />
+              Alerts & updates
+            </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="space-y-3 p-5">
             {alerts.map((a, i) => (
               <div
                 key={i}
-                className={`rounded-2xl border p-4 ${toneMap[a.tone]}`}
+                className={`rounded-2xl border p-4 transition hover:-translate-y-0.5 ${toneMap[a.tone]}`}
               >
-                <p className="font-display text-sm font-semibold text-[color:var(--color-primary-dark)]">
+                <p
+                  className={`font-display text-sm font-semibold ${toneTitle[a.tone]}`}
+                >
                   {a.title}
                 </p>
                 <p className="mt-1 text-xs text-[color:var(--color-text-secondary)]">
@@ -160,16 +173,16 @@ export default function SchoolOverview() {
             </CardTitle>
             <Link
               href="/dashboard/school/workshops"
-              className="text-sm font-semibold text-[color:var(--color-primary)]"
+              className="text-sm font-semibold text-[color:var(--color-primary)] transition hover:text-[color:var(--color-accent)]"
             >
               View schedule →
             </Link>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="space-y-3 p-5">
             {weeklyWorkshops.map((w) => (
               <div
                 key={w.id}
-                className="rounded-2xl border border-[color:var(--color-border)] bg-white p-4"
+                className="rounded-2xl border border-[color:var(--color-border)] bg-white p-4 transition hover:border-[#BAE6FD]"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[10px] uppercase tracking-wider text-[color:var(--color-accent)]">
@@ -185,9 +198,9 @@ export default function SchoolOverview() {
                 <p className="mt-0.5 text-xs text-[color:var(--color-text-secondary)]">
                   Led by {w.lead}
                 </p>
-                <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-[color:var(--color-surface)]">
+                <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-[color:var(--color-surface)]">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#1B1464] to-[#7C3AED]"
+                    className="h-full rounded-full bg-[linear-gradient(90deg,#1B1464_0%,#0EA5E9_100%)] shadow-[0_0_10px_rgba(14,165,233,0.4)]"
                     style={{ width: `${(w.week / w.total) * 100}%` }}
                   />
                 </div>
@@ -204,19 +217,19 @@ export default function SchoolOverview() {
             </CardTitle>
             <Link
               href="/dashboard/school/events"
-              className="text-sm font-semibold text-[color:var(--color-primary)]"
+              className="text-sm font-semibold text-[color:var(--color-primary)] transition hover:text-[color:var(--color-accent)]"
             >
               All events →
             </Link>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="space-y-3 p-5">
             {upcomingEvents.slice(0, 3).map((e) => (
               <div
                 key={e.id}
-                className="flex items-center justify-between rounded-2xl border border-[color:var(--color-border)] bg-white p-4"
+                className="flex items-center justify-between rounded-2xl border border-[color:var(--color-border)] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#BAE6FD] hover:shadow-[0_8px_22px_-16px_rgba(14,165,233,0.4)]"
               >
                 <div>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-[color:var(--color-surface-alt)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[color:var(--color-accent)]">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-[#BAE6FD] bg-[color:var(--color-accent-soft)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#075985]">
                     {e.scope}
                   </span>
                   <p className="mt-1.5 font-display text-sm font-semibold text-[color:var(--color-primary-dark)]">
@@ -228,7 +241,7 @@ export default function SchoolOverview() {
                 </div>
                 <Link
                   href={e.registrationLink}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[color:var(--color-primary)]"
+                  className="inline-flex items-center gap-1 rounded-full border border-[color:var(--color-border)] px-3 py-1.5 text-xs font-semibold text-[color:var(--color-primary)] transition hover:border-[#BAE6FD] hover:bg-[color:var(--color-accent-soft)] hover:text-[#075985]"
                 >
                   Register <ArrowRight className="h-3.5 w-3.5" />
                 </Link>

@@ -19,7 +19,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExpenseChart } from "@/components/charts/expense-chart";
 import { WorkTracker } from "@/components/dashboard/work-tracker";
 import { StatusBadge } from "@/components/ui/status-badge";
-import { GlassButton } from "@/components/ui/glass-button";
+import { Button } from "@/components/ui/button";
 import { VerifiedBadge } from "@/components/ui/verified-badge";
 import { orders } from "@/lib/mock-data";
 import { formatCurrency } from "@/lib/utils";
@@ -35,9 +35,9 @@ export default function ClientOverview() {
         title="Welcome back, Ishrat."
         description="Here's where your work stands — track progress, review demos, and chat with your team."
         actions={
-          <GlassButton variant="primary" size="sm">
+          <Button variant="primary" size="sm">
             <Plus className="h-4 w-4" /> New request
-          </GlassButton>
+          </Button>
         }
       />
 
@@ -49,11 +49,7 @@ export default function ClientOverview() {
           delta={{ value: "+12%", direction: "up" }}
           icon={Wallet}
         />
-        <StatCard
-          label="Active orders"
-          value="3"
-          icon={ListChecks}
-        />
+        <StatCard label="Active orders" value="3" icon={ListChecks} />
         <StatCard
           label="Verified reports"
           value="7"
@@ -78,7 +74,8 @@ export default function ClientOverview() {
             </p>
             <CardTitle className="mt-1">{activeOrder.title}</CardTitle>
             <p className="mt-1 text-sm text-[color:var(--color-text-secondary)]">
-              Deadline · {activeOrder.deadline} · Budget {formatCurrency(activeOrder.budget)}
+              Deadline · {activeOrder.deadline} · Budget{" "}
+              {formatCurrency(activeOrder.budget)}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -89,15 +86,15 @@ export default function ClientOverview() {
         <CardContent>
           <WorkTracker current={activeOrder.status} />
           <div className="mt-8 flex flex-wrap items-center gap-2">
-            <GlassButton variant="primary" size="sm">
+            <Button variant="primary" size="sm">
               <Eye className="h-4 w-4" /> View demo
-            </GlassButton>
-            <GlassButton size="sm">
+            </Button>
+            <Button variant="outline" size="sm">
               <MessageSquare className="h-4 w-4" /> Leave a remark
-            </GlassButton>
-            <GlassButton size="sm">
-              <Video className="h-4 w-4" /> Start Google Meet
-            </GlassButton>
+            </Button>
+            <Button variant="outline" size="sm">
+              <Video className="h-4 w-4" /> Google Meet
+            </Button>
           </div>
         </CardContent>
       </Card>
@@ -123,7 +120,7 @@ export default function ClientOverview() {
             {clientOrders.map((o) => (
               <div
                 key={o.id}
-                className="flex items-center justify-between rounded-xl border border-[color:var(--color-border)] bg-white p-4 transition hover:border-[color:var(--color-accent)]/40"
+                className="flex items-center justify-between rounded-xl border border-[color:var(--color-border)] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#BAE6FD] hover:shadow-[0_8px_24px_-16px_rgba(14,165,233,0.45)]"
               >
                 <div className="min-w-0">
                   <p className="font-mono text-[10px] uppercase tracking-wider text-[color:var(--color-text-secondary)]">
@@ -150,12 +147,12 @@ export default function ClientOverview() {
           <CardHeader>
             <CardTitle>Share files or a meeting link</CardTitle>
             <p className="mt-1 text-sm text-[color:var(--color-text-secondary)]">
-              Upload source material or drop a Drive/Meet link — we&rsquo;ll pick it up.
+              Upload source material or drop a Drive/Meet link.
             </p>
           </CardHeader>
           <CardContent className="space-y-3">
-            <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-8 text-center transition hover:border-[color:var(--color-accent)] hover:bg-[color:var(--color-surface-alt)]">
-              <UploadCloud className="h-6 w-6 text-[color:var(--color-primary)]" />
+            <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-8 text-center transition hover:border-[color:var(--color-accent)] hover:bg-[color:var(--color-accent-soft)]">
+              <UploadCloud className="h-6 w-6 text-[color:var(--color-accent)]" />
               <p className="mt-2 text-sm font-semibold text-[color:var(--color-primary-dark)]">
                 Drag & drop or click to upload
               </p>
@@ -169,20 +166,20 @@ export default function ClientOverview() {
               <LinkIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[color:var(--color-text-secondary)]" />
               <input
                 placeholder="Paste Google Drive link"
-                className="w-full rounded-xl border border-[color:var(--color-border)] bg-white py-2.5 pl-9 pr-3 text-sm outline-none focus:border-[color:var(--color-accent)]"
+                className="w-full rounded-xl border border-[color:var(--color-border)] bg-white py-2.5 pl-9 pr-3 text-sm outline-none transition focus:border-[color:var(--color-accent)] focus:shadow-[0_0_0_4px_rgba(14,165,233,0.15)]"
               />
             </div>
             <div className="relative">
               <Video className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[color:var(--color-text-secondary)]" />
               <input
                 placeholder="Paste Google Meet link"
-                className="w-full rounded-xl border border-[color:var(--color-border)] bg-white py-2.5 pl-9 pr-3 text-sm outline-none focus:border-[color:var(--color-accent)]"
+                className="w-full rounded-xl border border-[color:var(--color-border)] bg-white py-2.5 pl-9 pr-3 text-sm outline-none transition focus:border-[color:var(--color-accent)] focus:shadow-[0_0_0_4px_rgba(14,165,233,0.15)]"
               />
             </div>
 
-            <GlassButton variant="primary" className="w-full" size="sm">
+            <Button variant="sky" size="sm" glow className="w-full">
               Share with team
-            </GlassButton>
+            </Button>
           </CardContent>
         </Card>
       </div>
@@ -197,7 +194,7 @@ export default function ClientOverview() {
           </div>
           <Link
             href="/dashboard/client/expenses"
-            className="text-sm font-semibold text-[color:var(--color-primary)]"
+            className="text-sm font-semibold text-[color:var(--color-primary)] transition hover:text-[color:var(--color-accent)]"
           >
             Breakdown →
           </Link>

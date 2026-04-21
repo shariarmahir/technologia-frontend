@@ -13,7 +13,7 @@ import { StatCard } from "@/components/dashboard/stat-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RevenueChart } from "@/components/charts/revenue-chart";
 import { StatusBadge } from "@/components/ui/status-badge";
-import { GlassButton } from "@/components/ui/glass-button";
+import { Button } from "@/components/ui/button";
 import { orders, employees } from "@/lib/mock-data";
 import { formatCurrency } from "@/lib/utils";
 
@@ -30,11 +30,9 @@ export default function AdminOverview() {
         title="Good afternoon, Mahir."
         description="Here's how the platform is moving today — 7-day revenue is up, pipeline is healthy."
         actions={
-          <>
-            <GlassButton href="/admin/orders" variant="primary" size="sm">
-              Open pipeline <ArrowRight className="h-4 w-4" />
-            </GlassButton>
-          </>
+          <Button href="/admin/orders" variant="primary" size="sm">
+            Open pipeline <ArrowRight className="h-4 w-4" />
+          </Button>
         }
       />
 
@@ -45,6 +43,7 @@ export default function AdminOverview() {
           value="৳3,21,000"
           delta={{ value: "+11%", direction: "up" }}
           icon={Wallet}
+          hint="vs. last month"
         />
         <StatCard
           label="Active orders"
@@ -80,7 +79,7 @@ export default function AdminOverview() {
               {["3M", "6M", "12M"].map((r, i) => (
                 <button
                   key={r}
-                  className={`rounded-full px-3 py-1 font-semibold ${
+                  className={`rounded-full px-3 py-1 font-semibold transition ${
                     i === 1
                       ? "bg-[color:var(--color-primary)] text-white"
                       : "text-[color:var(--color-text-secondary)] hover:text-[color:var(--color-primary)]"
@@ -105,15 +104,12 @@ export default function AdminOverview() {
           </CardHeader>
           <CardContent className="space-y-4">
             {employees.map((e) => {
-              const pct = Math.min(
-                100,
-                Math.round((e.workload / e.capacity) * 100)
-              );
+              const pct = Math.min(100, Math.round((e.workload / e.capacity) * 100));
               return (
                 <div key={e.id}>
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2.5">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#1B1464] to-[#7C3AED] text-xs font-semibold text-white">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1B1464_0%,#0EA5E9_100%)] text-xs font-semibold text-white">
                         {e.name[0]}
                       </span>
                       <div className="leading-tight">
@@ -131,7 +127,7 @@ export default function AdminOverview() {
                   </div>
                   <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-[color:var(--color-surface)]">
                     <div
-                      className={`h-full rounded-full ${
+                      className={`h-full rounded-full transition-all ${
                         pct >= 85
                           ? "bg-[color:var(--color-danger)]"
                           : pct >= 60
@@ -158,7 +154,7 @@ export default function AdminOverview() {
           </div>
           <Link
             href="/admin/orders"
-            className="text-sm font-semibold text-[color:var(--color-primary)] hover:text-[color:var(--color-accent)]"
+            className="text-sm font-semibold text-[color:var(--color-primary)] transition hover:text-[color:var(--color-accent)]"
           >
             View all →
           </Link>
@@ -180,7 +176,7 @@ export default function AdminOverview() {
                 {recent.map((o) => (
                   <tr
                     key={o.id}
-                    className="border-b border-[color:var(--color-border)]/60 last:border-0 hover:bg-[color:var(--color-surface)]"
+                    className="border-b border-[color:var(--color-border)]/60 last:border-0 transition hover:bg-[color:var(--color-surface)]"
                   >
                     <td className="px-6 py-3.5">
                       <p className="font-mono text-[11px] text-[color:var(--color-text-secondary)]">
@@ -194,7 +190,11 @@ export default function AdminOverview() {
                       {o.client}
                     </td>
                     <td className="px-3 py-3.5 text-[color:var(--color-text-secondary)]">
-                      {o.assignedTo ?? <span className="italic">Unassigned</span>}
+                      {o.assignedTo ?? (
+                        <span className="italic text-[color:var(--color-text-secondary)]/60">
+                          Unassigned
+                        </span>
+                      )}
                     </td>
                     <td className="px-3 py-3.5 font-mono text-[color:var(--color-text-primary)]">
                       {formatCurrency(o.budget)}
@@ -203,7 +203,7 @@ export default function AdminOverview() {
                       <StatusBadge status={o.status} />
                     </td>
                     <td className="px-6 py-3.5 text-right">
-                      <button className="text-xs font-semibold text-[color:var(--color-primary)] hover:text-[color:var(--color-accent)]">
+                      <button className="rounded-full border border-[color:var(--color-border)] px-3 py-1 text-xs font-semibold text-[color:var(--color-primary)] transition hover:border-[#BAE6FD] hover:bg-[color:var(--color-accent-soft)] hover:text-[#075985]">
                         Manage
                       </button>
                     </td>

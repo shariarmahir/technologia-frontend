@@ -18,7 +18,7 @@ export function WorkTracker({ current }: { current: OrderStatus }) {
     <div className="relative">
       <div className="absolute left-4 right-4 top-4 h-[2px] bg-[color:var(--color-border)]" />
       <div
-        className="absolute left-4 top-4 h-[2px] bg-gradient-to-r from-[#1B1464] to-[#7C3AED] transition-all"
+        className="absolute left-4 top-4 h-[2px] bg-[linear-gradient(90deg,#1B1464_0%,#0EA5E9_100%)] shadow-[0_0_14px_rgba(14,165,233,0.55)] transition-all"
         style={{
           width: `calc(${(clamped / (stages.length - 1)) * 100}% - 2rem)`,
         }}
@@ -36,8 +36,9 @@ export function WorkTracker({ current }: { current: OrderStatus }) {
                   done &&
                     "border-[color:var(--color-primary)] bg-[color:var(--color-primary)] text-white",
                   active &&
-                    "border-[color:var(--color-accent)] bg-white text-[color:var(--color-accent)] shadow-[0_0_0_6px_rgba(124,58,237,0.15)]",
-                  !done && !active &&
+                    "border-[color:var(--color-accent)] bg-white text-[color:var(--color-accent)] shadow-[0_0_0_6px_rgba(14,165,233,0.18)]",
+                  !done &&
+                    !active &&
                     "border-[color:var(--color-border)] bg-white text-[color:var(--color-text-secondary)]"
                 )}
               >
