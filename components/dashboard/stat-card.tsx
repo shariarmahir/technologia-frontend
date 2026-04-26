@@ -25,7 +25,7 @@ export function StatCard({
 
   const surface = {
     default:
-      "bg-white border-[color:var(--color-border)] shadow-[0_4px_24px_-12px_rgba(15,11,61,0.12)] hover:shadow-[0_14px_40px_-20px_rgba(14,165,233,0.35)] hover:border-[#BAE6FD]",
+      "bg-white/90 backdrop-blur-sm border-[#BAE6FD]/50 shadow-[0_2px_0_rgba(255,255,255,0.85)_inset,0_6px_24px_-8px_rgba(14,165,233,0.09)] hover:shadow-[0_2px_0_rgba(255,255,255,0.85)_inset,0_16px_40px_-12px_rgba(14,165,233,0.22)] hover:border-[#BAE6FD]",
     primary:
       "text-white border-[#1E40AF]/50 bg-[linear-gradient(135deg,#0A0930_0%,#1B1464_55%,#0369A1_120%)] shadow-[0_22px_50px_-18px_rgba(14,20,70,0.6)]",
     accent:

@@ -6,8 +6,8 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { labLeaderboard } from "@/lib/mock-data";
 
-const medals = ["#FCD34D", "#CBD5E1", "#C4A86B"];
-const medalBg = ["bg-[#FEF9C3] text-[#78350F]", "bg-[#F1F5F9] text-[#334155]", "bg-[#FEF3E2] text-[#7C2D12]"];
+const medals = ["#38BDF8", "#CBD5E1", "#C4A86B"];
+const medalBg = ["bg-[#E0F2FE] text-[#075985]", "bg-[#F1F5F9] text-[#334155]", "bg-[#FEF3E2] text-[#7C2D12]"];
 
 export default function LeaderboardPage() {
   const top3 = labLeaderboard.slice(0, 3);
@@ -62,16 +62,16 @@ export default function LeaderboardPage() {
             transition={{ duration: 0.5 }}
             className="flex w-[34%] max-w-[200px] flex-col items-center gap-2"
           >
-            <Trophy className="h-8 w-8 text-[#FCD34D]" />
-            <span className="flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-[#FCD34D] bg-[#FCD34D]/20 text-2xl font-bold text-[#FCD34D]">
+            <Trophy className="h-8 w-8 text-[#38BDF8]" />
+            <span className="flex h-16 w-16 items-center justify-center rounded-2xl border-2 border-[#38BDF8] bg-[#38BDF8]/20 text-2xl font-bold text-[#38BDF8]">
               1
             </span>
-            <div className="flex h-36 w-full flex-col items-center justify-end rounded-t-xl bg-[#FCD34D]/20 pb-4 shadow-[0_-8px_40px_-10px_rgba(252,211,77,0.4)]">
+            <div className="flex h-36 w-full flex-col items-center justify-end rounded-t-xl bg-[#38BDF8]/20 pb-4 shadow-[0_-8px_40px_-10px_rgba(56,189,248,0.4)]">
               <p className="px-2 text-center font-display text-sm font-semibold text-white">
                 {top3[0].lab}
               </p>
               <p className="font-mono text-[10px] text-white/60">{top3[0].university}</p>
-              <p className="mt-1 font-mono text-base font-bold text-[#FCD34D]">
+              <p className="mt-1 font-mono text-base font-bold text-[#38BDF8]">
                 {top3[0].xp.toLocaleString()} XP
               </p>
             </div>

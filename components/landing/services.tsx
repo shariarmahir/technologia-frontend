@@ -19,7 +19,7 @@ type Service = {
   description: string;
   bullets: string[];
   pricing: string;
-  tone: "light" | "sky" | "dark";
+  tone: "light" | "yellow" | "dark";
 };
 
 const services: Service[] = [
@@ -49,7 +49,7 @@ const services: Service[] = [
       "Prototype + full documentation",
     ],
     pricing: "From ৳8,000 / project",
-    tone: "sky",
+    tone: "yellow",
   },
   {
     icon: PenTool,
@@ -72,33 +72,33 @@ const toneStyles = {
     card: "bg-white border-[color:var(--color-border)]",
     icon: "bg-[color:var(--color-primary)] text-white",
     tag: "text-[color:var(--color-primary)]",
-    cta: "text-[color:var(--color-primary)] hover:text-[color:var(--color-accent)]",
-    check: "text-[color:var(--color-accent)]",
+    cta: "text-[color:var(--color-primary)] hover:text-[color:var(--color-primary-light)]",
+    check: "text-[color:var(--color-primary)]",
     title: "text-[color:var(--color-primary-dark)]",
     body: "text-[color:var(--color-text-secondary)]",
     list: "text-[color:var(--color-text-primary)]",
     price:
       "border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-primary)]",
   },
-  sky: {
+  yellow: {
     card:
-      "bg-gradient-to-br from-[#F0F9FF] to-white border-[#BAE6FD]",
-    icon: "bg-[color:var(--color-accent)] text-white",
-    tag: "text-[#075985]",
-    cta: "text-[#075985] hover:text-[color:var(--color-primary)]",
-    check: "text-[color:var(--color-accent)]",
+      "bg-gradient-to-br from-[#FFFBEB] to-white border-[#FFD662]/60",
+    icon: "bg-[#FFD662] text-[#001A3E]",
+    tag: "text-[#003A6E]",
+    cta: "text-[#003A6E] hover:text-[color:var(--color-primary)]",
+    check: "text-[#FFD662]",
     title: "text-[color:var(--color-primary-dark)]",
-    body: "text-[#0C4A6E]/80",
-    list: "text-[#0C4A6E]",
-    price: "border-[#BAE6FD] bg-white text-[#075985]",
+    body: "text-[#003A6E]/80",
+    list: "text-[#003A6E]",
+    price: "border-[#FFD662]/50 bg-white text-[#003A6E]",
   },
   dark: {
     card:
-      "bg-[linear-gradient(135deg,#0EA5E9_0%,#38BDF8_55%,#7DD3FC_110%)] border-[#0EA5E9]/50",
+      "bg-[linear-gradient(135deg,#00539C_0%,#0066B8_55%,#003A6E_110%)] border-[#00539C]/50",
     icon: "bg-white/20 text-white border border-white/30",
     tag: "text-white/80",
     cta: "text-white hover:text-white/80",
-    check: "text-white",
+    check: "text-[#FFD662]",
     title: "text-white",
     body: "text-white/80",
     list: "text-white/85",
@@ -134,12 +134,12 @@ export function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.55, delay: i * 0.08 }}
-                className={`group relative flex flex-col overflow-hidden rounded-[24px] border p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_-20px_rgba(15,11,61,0.28)] ${t.card}`}
+                className={`group relative flex flex-col overflow-hidden rounded-[24px] border p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_-20px_rgba(0,58,110,0.28)] ${t.card}`}
               >
                 {dark && (
                   <>
-                    <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[#F59E0B]/40 blur-3xl" />
-                    <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-[#FCD34D]/30 blur-3xl" />
+                    <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[#FFD662]/25 blur-3xl" />
+                    <div className="absolute -bottom-24 -left-10 h-60 w-60 rounded-full bg-[#FFE48A]/15 blur-3xl" />
                   </>
                 )}
 

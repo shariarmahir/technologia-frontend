@@ -17,7 +17,7 @@ import { labCompetitions } from "@/lib/mock-data";
 
 const statusStyle: Record<string, { label: string; chip: string; dot: string }> = {
   upcoming: { label: "Upcoming", chip: "border-[#BAE6FD] bg-[#E0F2FE] text-[#075985]", dot: "bg-[#0EA5E9]" },
-  registration: { label: "Registration open", chip: "border-[#FDE68A] bg-[#FEF3C7] text-[#B45309]", dot: "bg-[#F59E0B] animate-pulse" },
+  registration: { label: "Registration open", chip: "border-[#BAE6FD] bg-[#E0F2FE] text-[#0369A1]", dot: "bg-[#0EA5E9] animate-pulse" },
   active: { label: "Active", chip: "border-[#FBCFE8] bg-[#FCE7F3] text-[#9D174D]", dot: "bg-[#DB2777] animate-pulse" },
   completed: { label: "Completed", chip: "border-[#BBF7D0] bg-[#DCFCE7] text-[#047857]", dot: "bg-[#10B981]" },
 };
@@ -102,7 +102,7 @@ export default function CompetitionsPage() {
                   {comp.prizes.map((prize, pi) => (
                     <span
                       key={pi}
-                      className="flex items-center gap-1 rounded-full bg-[#FCD34D]/20 px-2.5 py-1 font-mono text-[11px] text-[#FCD34D]"
+                      className="flex items-center gap-1 rounded-full bg-[#0EA5E9]/15 px-2.5 py-1 font-mono text-[11px] text-[#0369A1]"
                     >
                       <Trophy className="h-3 w-3" />
                       {pi === 0 ? "1st" : pi === 1 ? "2nd" : "3rd"} · {prize}
@@ -206,7 +206,7 @@ export default function CompetitionsPage() {
                     {comp.prizes.map((prize, pi) => (
                       <span
                         key={pi}
-                        className="flex items-center gap-1 rounded-full bg-[#FEF3C7] px-2.5 py-1 font-mono text-[11px] text-[#B45309]"
+                        className="flex items-center gap-1 rounded-full bg-[#E0F2FE] px-2.5 py-1 font-mono text-[11px] text-[#0369A1]"
                       >
                         <Tag className="h-3 w-3" /> {prize}
                       </span>

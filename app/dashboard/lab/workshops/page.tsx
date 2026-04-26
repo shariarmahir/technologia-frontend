@@ -26,8 +26,8 @@ const statusMap = {
   },
   ongoing: {
     label: "Ongoing",
-    dot: "bg-[#F59E0B]",
-    chip: "border-[#FDE68A] bg-[#FEF3C7] text-[#B45309]",
+    dot: "bg-[#0EA5E9] animate-pulse",
+    chip: "border-[#BAE6FD] bg-[#E0F2FE] text-[#0369A1]",
   },
   completed: {
     label: "Completed",

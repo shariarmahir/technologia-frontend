@@ -120,7 +120,7 @@ export default function ClientOverview() {
             {clientOrders.map((o) => (
               <div
                 key={o.id}
-                className="flex items-center justify-between rounded-xl border border-[color:var(--color-border)] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#BAE6FD] hover:shadow-[0_8px_24px_-16px_rgba(14,165,233,0.45)]"
+                className="flex items-center justify-between rounded-xl border border-[#BAE6FD]/40 bg-white/90 p-4 transition hover:-translate-y-0.5 hover:border-[#BAE6FD] hover:bg-white hover:shadow-[0_10px_32px_-8px_rgba(14,165,233,0.28)]"
               >
                 <div className="min-w-0">
                   <p className="font-mono text-[10px] uppercase tracking-wider text-[color:var(--color-text-secondary)]">
@@ -151,7 +151,7 @@ export default function ClientOverview() {
             </p>
           </CardHeader>
           <CardContent className="space-y-3">
-            <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-4 py-8 text-center transition hover:border-[color:var(--color-accent)] hover:bg-[color:var(--color-accent-soft)]">
+            <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#BAE6FD]/60 bg-[#F0F9FF]/60 backdrop-blur-[2px] px-4 py-8 text-center transition hover:border-[#0EA5E9] hover:bg-[#E0F2FE]/60 hover:shadow-[0_8px_24px_rgba(14,165,233,0.10)]">
               <UploadCloud className="h-6 w-6 text-[color:var(--color-accent)]" />
               <p className="mt-2 text-sm font-semibold text-[color:var(--color-primary-dark)]">
                 Drag & drop or click to upload
@@ -166,14 +166,14 @@ export default function ClientOverview() {
               <LinkIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[color:var(--color-text-secondary)]" />
               <input
                 placeholder="Paste Google Drive link"
-                className="w-full rounded-xl border border-[color:var(--color-border)] bg-white py-2.5 pl-9 pr-3 text-sm outline-none transition focus:border-[color:var(--color-accent)] focus:shadow-[0_0_0_4px_rgba(14,165,233,0.15)]"
+                className="w-full rounded-xl border border-[#BAE6FD]/50 bg-white/80 py-2.5 pl-9 pr-3 text-sm outline-none transition focus:border-[#0EA5E9] focus:bg-white focus:shadow-[0_0_0_4px_rgba(14,165,233,0.15)]"
               />
             </div>
             <div className="relative">
               <Video className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[color:var(--color-text-secondary)]" />
               <input
                 placeholder="Paste Google Meet link"
-                className="w-full rounded-xl border border-[color:var(--color-border)] bg-white py-2.5 pl-9 pr-3 text-sm outline-none transition focus:border-[color:var(--color-accent)] focus:shadow-[0_0_0_4px_rgba(14,165,233,0.15)]"
+                className="w-full rounded-xl border border-[#BAE6FD]/50 bg-white/80 py-2.5 pl-9 pr-3 text-sm outline-none transition focus:border-[#0EA5E9] focus:bg-white focus:shadow-[0_0_0_4px_rgba(14,165,233,0.15)]"
               />
             </div>
 

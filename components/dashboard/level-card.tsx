@@ -42,8 +42,8 @@ export function LevelCard({
             <span className="text-[#7DD3FC]">{nextRank}</span>
           </p>
         </div>
-        <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md shadow-[0_10px_30px_-10px_rgba(252,211,77,0.35)]">
-          <Trophy className="h-6 w-6 text-[#FCD34D]" />
+        <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md shadow-[0_10px_30px_-10px_rgba(56,189,248,0.35)]">
+          <Trophy className="h-6 w-6 text-[#38BDF8]" />
         </span>
       </div>
 

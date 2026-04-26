@@ -11,7 +11,7 @@ import { formatCurrency, cn } from "@/lib/utils";
 const columns: { status: OrderStatus; label: string; accent: string }[] = [
   { status: "requested", label: "Requested", accent: "bg-[#2E21A3]" },
   { status: "assigned", label: "Assigned", accent: "bg-[#1E40AF]" },
-  { status: "in_progress", label: "In Progress", accent: "bg-[#F59E0B]" },
+  { status: "in_progress", label: "In Progress", accent: "bg-[#3B82F6]" },
   { status: "pending_review", label: "Pending Review", accent: "bg-[#DB2777]" },
   { status: "submitted", label: "Submitted", accent: "bg-[#0284C7]" },
   { status: "completed", label: "Completed", accent: "bg-[#10B981]" },

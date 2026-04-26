@@ -52,21 +52,21 @@ export function DashboardShell({
 
   return (
     <div className="relative flex min-h-screen w-full bg-[color:var(--color-surface)]">
-      {/* Ambient sky-blue wash behind content */}
+      {/* Ambient wash */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-0 opacity-70"
         style={{
           background:
-            "radial-gradient(60% 40% at 85% -5%, rgba(14,165,233,0.10) 0%, transparent 70%), radial-gradient(50% 40% at -5% 100%, rgba(27,20,100,0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse 55% 50% at 90% -5%, rgba(255,214,98,0.12) 0%, transparent 65%), radial-gradient(ellipse 45% 40% at -5% 100%, rgba(0,83,156,0.10) 0%, transparent 65%), radial-gradient(ellipse 35% 35% at 50% 55%, rgba(0,102,184,0.05) 0%, transparent 100%)",
         }}
       />
 
       {/* Sidebar desktop */}
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-[268px] lg:block">
-        <div className="relative h-full overflow-hidden border-r border-white/5 bg-[linear-gradient(180deg,#0A0930_0%,#141060_40%,#0E3A74_100%)] text-white">
-          <div className="absolute -right-20 top-10 h-60 w-60 rounded-full bg-[#0EA5E9]/25 blur-3xl" />
-          <div className="absolute -left-20 bottom-10 h-60 w-60 rounded-full bg-[#38BDF8]/15 blur-3xl" />
+        <div className="relative h-full overflow-hidden border-r border-white/5 bg-[linear-gradient(180deg,#001A3E_0%,#002B6E_40%,#003A6E_100%)] text-white">
+          <div className="absolute -right-20 top-10 h-60 w-60 rounded-full bg-[#FFD662]/15 blur-3xl" />
+          <div className="absolute -left-20 bottom-10 h-60 w-60 rounded-full bg-[#00539C]/20 blur-3xl" />
           <SidebarInner nav={nav} pathname={pathname} roleLabel={roleLabel} />
         </div>
       </aside>
@@ -81,13 +81,13 @@ export function DashboardShell({
         <div
           onClick={() => setOpen(false)}
           className={cn(
-            "absolute inset-0 bg-[#0A0930]/70 backdrop-blur-sm transition-opacity",
+            "absolute inset-0 bg-[#001A3E]/70 backdrop-blur-sm transition-opacity",
             open ? "opacity-100" : "opacity-0"
           )}
         />
         <aside
           className={cn(
-            "absolute inset-y-0 left-0 w-[288px] bg-[linear-gradient(180deg,#0A0930_0%,#141060_40%,#0E3A74_100%)] text-white shadow-2xl transition-transform",
+            "absolute inset-y-0 left-0 w-[288px] bg-[linear-gradient(180deg,#001A3E_0%,#002B6E_40%,#003A6E_100%)] text-white shadow-2xl transition-transform",
             open ? "translate-x-0" : "-translate-x-full"
           )}
         >
@@ -112,7 +112,7 @@ export function DashboardShell({
 
       {/* Main */}
       <div className="relative flex min-h-screen flex-1 flex-col lg:pl-[268px]">
-        <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-[color:var(--color-border)]/70 bg-white/75 px-5 backdrop-blur-xl sm:px-8">
+        <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-[#00539C]/20 bg-white/82 px-5 backdrop-blur-xl shadow-[0_1px_0_rgba(0,83,156,0.08),0_4px_20px_rgba(0,83,156,0.04)] sm:px-8">
           <button
             onClick={() => setOpen(true)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-primary)] lg:hidden"
@@ -124,7 +124,7 @@ export function DashboardShell({
             <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[color:var(--color-text-secondary)]" />
             <input
               placeholder="Search orders, teams, events…"
-              className="w-full rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] py-2 pl-10 pr-16 text-sm outline-none transition focus:border-[color:var(--color-accent)] focus:bg-white focus:shadow-[0_0_0_4px_rgba(14,165,233,0.12)]"
+              className="w-full rounded-full border border-[#00539C]/25 bg-white/70 py-2 pl-10 pr-16 text-sm outline-none transition placeholder:text-[#94A3B8] focus:border-[#00539C] focus:bg-white focus:shadow-[0_0_0_4px_rgba(0,83,156,0.12)]"
             />
             <kbd className="absolute right-2.5 top-1/2 inline-flex h-6 -translate-y-1/2 items-center gap-1 rounded-md border border-[color:var(--color-border)] bg-white px-1.5 font-mono text-[10px] text-[color:var(--color-text-secondary)]">
               <Command className="h-3 w-3" /> K
@@ -132,15 +132,15 @@ export function DashboardShell({
           </div>
 
           <div className="ml-auto flex items-center gap-2">
-            <button className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-white text-[color:var(--color-primary)] transition hover:border-[#BAE6FD] hover:bg-[color:var(--color-accent-soft)]">
+            <button className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#FFD662]/40 bg-white/85 backdrop-blur-sm text-[color:var(--color-primary)] transition hover:border-[#FFD662]/70 hover:bg-[#FFFBEB] hover:shadow-[0_4px_16px_rgba(255,214,98,0.2)]">
               <Bell className="h-4 w-4" />
-              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-[color:var(--color-accent)] shadow-[0_0_0_3px_rgba(14,165,233,0.25)]" />
+              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-[#FFD662] shadow-[0_0_0_2px_white] animate-pulse" />
             </button>
-            <button className="hidden h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-white text-[color:var(--color-primary)] transition hover:border-[#BAE6FD] hover:bg-[color:var(--color-accent-soft)] sm:inline-flex">
+            <button className="hidden h-10 w-10 items-center justify-center rounded-full border border-[#FFD662]/40 bg-white/85 backdrop-blur-sm text-[color:var(--color-primary)] transition hover:border-[#FFD662]/70 hover:bg-[#FFFBEB] hover:shadow-[0_4px_16px_rgba(255,214,98,0.2)] sm:inline-flex">
               <Settings className="h-4 w-4" />
             </button>
-            <div className="ml-1 flex items-center gap-2.5 rounded-full border border-[color:var(--color-border)] bg-white py-1 pl-1 pr-3.5 shadow-[0_4px_16px_-8px_rgba(15,11,61,0.15)]">
-              <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1B1464_0%,#0EA5E9_100%)] text-xs font-semibold text-white">
+            <div className="ml-1 flex items-center gap-2.5 rounded-full border border-[#00539C]/25 bg-white/88 backdrop-blur-sm py-1 pl-1 pr-3.5 shadow-[0_4px_20px_-4px_rgba(0,83,156,0.2)]">
+              <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[linear-gradient(135deg,#003A6E_0%,#00539C_100%)] text-xs font-semibold text-white">
                 {initials(userName)}
                 <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#10B981]" />
               </span>
@@ -185,10 +185,10 @@ function SidebarInner({
         </div>
       )}
       <div className="mt-6 px-6">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[#7DD3FC]">
+        <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[#FFD662]">
           <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#38BDF8] opacity-75" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#0EA5E9]" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FFD662] opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#FFD662]" />
           </span>
           {roleLabel}
         </span>
@@ -208,17 +208,17 @@ function SidebarInner({
               className={cn(
                 "group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all",
                 active
-                  ? "bg-[linear-gradient(135deg,rgba(14,165,233,0.18)_0%,rgba(56,189,248,0.08)_100%)] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]"
+                  ? "bg-[linear-gradient(135deg,rgba(255,214,98,0.18)_0%,rgba(255,228,138,0.08)_100%)] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]"
                   : "text-white/60 hover:bg-white/5 hover:text-white"
               )}
             >
               {active && (
-                <span className="absolute -left-3 top-1/2 h-7 w-1 -translate-y-1/2 rounded-r-full bg-[#38BDF8] shadow-[0_0_18px_rgba(56,189,248,0.85)]" />
+                <span className="absolute -left-3 top-1/2 h-7 w-1 -translate-y-1/2 rounded-r-full bg-[#FFD662] shadow-[0_0_18px_rgba(255,214,98,0.85)]" />
               )}
               <Icon
                 className={cn(
                   "h-4 w-4 transition-colors",
-                  active ? "text-[#7DD3FC]" : "text-white/55 group-hover:text-white"
+                  active ? "text-[#FFD662]" : "text-white/55 group-hover:text-white"
                 )}
               />
               <span className="flex-1">{item.label}</span>
@@ -227,7 +227,7 @@ function SidebarInner({
                   className={cn(
                     "rounded-full px-1.5 py-0.5 text-[10px] font-semibold transition",
                     active
-                      ? "bg-[#0EA5E9] text-white shadow-[0_0_10px_rgba(14,165,233,0.6)]"
+                      ? "bg-[#FFD662] text-[#001A3E] shadow-[0_0_10px_rgba(255,214,98,0.6)]"
                       : "bg-white/10 text-white/80"
                   )}
                 >
@@ -235,25 +235,25 @@ function SidebarInner({
                 </span>
               )}
               {active && (
-                <ChevronRight className="h-3.5 w-3.5 text-[#7DD3FC]" />
+                <ChevronRight className="h-3.5 w-3.5 text-[#FFD662]" />
               )}
             </Link>
           );
         })}
       </nav>
 
-      <div className="relative mx-4 mt-4 overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(14,165,233,0.15)_0%,rgba(27,20,100,0.4)_100%)] p-4 text-white">
-        <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[#38BDF8]/30 blur-2xl" />
+      <div className="relative mx-4 mt-4 overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(255,214,98,0.12)_0%,rgba(0,83,156,0.4)_100%)] p-4 text-white">
+        <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[#FFD662]/20 blur-2xl" />
         <div className="relative flex items-center gap-2">
           <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/15 bg-white/10">
-            <Sparkles className="h-4 w-4 text-[#7DD3FC]" />
+            <Sparkles className="h-4 w-4 text-[#FFD662]" />
           </span>
           <p className="font-display text-sm font-semibold">Need a hand?</p>
         </div>
         <p className="relative mt-2 text-xs text-white/65">
           Chat with the technoLOgia team — we reply within an hour.
         </p>
-        <button className="relative mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-[linear-gradient(135deg,#0EA5E9_0%,#38BDF8_100%)] py-2 text-xs font-semibold text-white shadow-[0_10px_28px_-10px_rgba(14,165,233,0.8)] transition hover:brightness-110">
+        <button className="relative mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-[linear-gradient(135deg,#FFD662_0%,#FFE48A_100%)] py-2 text-xs font-semibold text-[#001A3E] shadow-[0_10px_28px_-10px_rgba(255,214,98,0.7)] transition hover:brightness-105">
           Contact support
         </button>
       </div>

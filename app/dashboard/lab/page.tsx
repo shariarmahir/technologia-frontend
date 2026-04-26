@@ -31,7 +31,7 @@ const topFive = labLeaderboard.slice(0, 5);
 
 const challengeStatus: Record<string, { label: string; color: string; bg: string }> = {
   open: { label: "Open", color: "#075985", bg: "#E0F2FE" },
-  active: { label: "Active", color: "#B45309", bg: "#FEF3C7" },
+  active: { label: "Active", color: "#0369A1", bg: "#E0F2FE" },
   judging: { label: "Judging", color: "#9D174D", bg: "#FCE7F3" },
   completed: { label: "Completed", color: "#047857", bg: "#DCFCE7" },
 };
@@ -111,14 +111,14 @@ export default function LabOverview() {
                 key={lab.rank}
                 className={`flex items-center gap-3 rounded-xl p-3 transition ${
                   lab.isOwn
-                    ? "border border-[#BAE6FD] bg-[color:var(--color-accent-soft)]"
-                    : "bg-[color:var(--color-surface)] hover:bg-white"
+                    ? "border border-[#BAE6FD] bg-[#E0F2FE]/80 backdrop-blur-sm shadow-[0_4px_16px_rgba(14,165,233,0.14)]"
+                    : "bg-white/80 backdrop-blur-[2px] hover:bg-white hover:shadow-[0_4px_16px_rgba(14,165,233,0.1)]"
                 }`}
               >
                 <span
                   className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full font-mono text-xs font-bold ${
                     lab.rank === 1
-                      ? "bg-[#FCD34D] text-[#78350F]"
+                      ? "bg-[#38BDF8] text-white"
                       : lab.rank === 2
                       ? "bg-[#CBD5E1] text-[#334155]"
                       : lab.rank === 3
@@ -191,7 +191,7 @@ export default function LabOverview() {
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="group rounded-2xl border border-[color:var(--color-border)] bg-white p-4 transition hover:border-[#BAE6FD] hover:shadow-[0_10px_28px_-16px_rgba(14,165,233,0.4)]"
+                  className="group rounded-2xl border border-[#BAE6FD]/40 bg-white/90 p-4 transition hover:border-[#BAE6FD] hover:bg-white hover:shadow-[0_12px_32px_-8px_rgba(14,165,233,0.25)]"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
@@ -200,7 +200,7 @@ export default function LabOverview() {
                           Session {w.session}/{w.totalSessions} · {w.day}
                         </span>
                         {!w.materials && (
-                          <span className="rounded-full bg-[#FEF3C7] px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[#B45309]">
+                          <span className="rounded-full bg-[#E0F2FE] px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[#0369A1]">
                             Materials pending
                           </span>
                         )}
@@ -217,7 +217,7 @@ export default function LabOverview() {
                     </span>
                   </div>
                   <div className="mt-3 flex items-center gap-2">
-                    <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[color:var(--color-surface)]">
+                    <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#E0F2FE]/70">
                       <div
                         className="h-full rounded-full bg-[linear-gradient(90deg,#1B1464_0%,#0EA5E9_100%)]"
                         style={{ width: `${pct}%` }}
@@ -288,7 +288,7 @@ export default function LabOverview() {
                   />
                 </div>
 
-                <div className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3">
+                <div className="rounded-xl border border-[#BAE6FD]/40 bg-white/80 backdrop-blur-sm p-3">
                   <p className="font-mono text-[10px] uppercase tracking-wider text-[color:var(--color-text-secondary)]">
                     Judging rubric
                   </p>
@@ -297,12 +297,12 @@ export default function LabOverview() {
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between rounded-xl border border-[color:var(--color-border)] bg-white p-3">
+                <div className="flex items-center justify-between rounded-xl border border-[#BAE6FD]/50 bg-white/90 backdrop-blur-sm p-3">
                   <div className="flex items-center gap-2">
                     {activeChallenge.submissions.challenger ? (
                       <CheckCircle2 className="h-4 w-4 text-[#10B981]" />
                     ) : (
-                      <Clock className="h-4 w-4 text-[#F59E0B]" />
+                      <Clock className="h-4 w-4 text-[#0EA5E9]" />
                     )}
                     <span className="text-xs text-[color:var(--color-text-secondary)]">
                       Your submission
@@ -368,7 +368,7 @@ export default function LabOverview() {
             ].map((m, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2.5 rounded-xl border border-[color:var(--color-border)] bg-white px-3 py-2 transition hover:border-[#BAE6FD] hover:shadow-[0_6px_18px_-12px_rgba(14,165,233,0.5)]"
+                className="flex items-center gap-2.5 rounded-xl border border-[#BAE6FD]/40 bg-white/90 px-3 py-2 transition hover:border-[#BAE6FD] hover:bg-white hover:shadow-[0_6px_20px_-6px_rgba(14,165,233,0.28)]"
               >
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1B1464_0%,#0EA5E9_100%)] text-[11px] font-semibold text-white">
                   {m.name[0]}
@@ -402,7 +402,7 @@ function InfoTile({
   value: string;
 }) {
   return (
-    <div className="flex flex-col gap-1 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3">
+    <div className="flex flex-col gap-1 rounded-xl border border-[#BAE6FD]/40 bg-white/80 backdrop-blur-sm p-3">
       <div className="flex items-center gap-1.5 text-[color:var(--color-text-secondary)]">
         {icon}
         <span className="font-mono text-[10px] uppercase tracking-wider">{label}</span>

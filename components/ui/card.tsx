@@ -8,7 +8,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-[20px] border border-[color:var(--color-border)] bg-white shadow-[0_4px_24px_rgba(15,11,61,0.04)]",
+        "rounded-[24px] border border-[#BAE6FD]/50 bg-white/90 backdrop-blur-sm shadow-[0_2px_0_rgba(255,255,255,0.85)_inset,0_8px_32px_-4px_rgba(14,165,233,0.09)] transition-all duration-300 hover:border-[#BAE6FD] hover:shadow-[0_2px_0_rgba(255,255,255,0.85)_inset,0_18px_48px_-8px_rgba(14,165,233,0.16)]",
         className
       )}
       {...props}
@@ -22,7 +22,7 @@ export function CardHeader({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("p-6 border-b border-[color:var(--color-border)]", className)}
+      className={cn("p-6 border-b border-[#BAE6FD]/30", className)}
       {...props}
     />
   );

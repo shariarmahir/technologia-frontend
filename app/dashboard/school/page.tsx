@@ -36,15 +36,15 @@ const alerts = [
 ];
 
 const toneMap = {
-  accent: "border-[#BAE6FD] bg-[#E0F2FE]",
-  primary: "border-[color:var(--color-primary)]/20 bg-[color:var(--color-surface)]",
-  warning: "border-[#FDE68A] bg-[#FEF3C7]",
+  accent: "border-[#BAE6FD] bg-[#F0F9FF]/90 backdrop-blur-sm shadow-[0_4px_16px_rgba(14,165,233,0.1)]",
+  primary: "border-[#BAE6FD]/40 bg-white/85 backdrop-blur-sm shadow-[0_4px_16px_rgba(14,165,233,0.06)]",
+  warning: "border-[#BAE6FD] bg-[#F0F9FF]/90 backdrop-blur-sm shadow-[0_4px_16px_rgba(14,165,233,0.1)]",
 };
 
 const toneTitle = {
   accent: "text-[#075985]",
   primary: "text-[color:var(--color-primary-dark)]",
-  warning: "text-[#92400E]",
+  warning: "text-[#075985]",
 };
 
 export default function SchoolOverview() {
@@ -109,7 +109,7 @@ export default function SchoolOverview() {
             {schoolTeams.map((t) => (
               <div
                 key={t.id}
-                className="flex items-center justify-between rounded-2xl border border-[color:var(--color-border)] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#BAE6FD] hover:shadow-[0_10px_28px_-16px_rgba(14,165,233,0.4)]"
+                className="flex items-center justify-between rounded-2xl border border-[#BAE6FD]/40 bg-white/90 p-4 transition hover:-translate-y-0.5 hover:border-[#BAE6FD] hover:bg-white hover:shadow-[0_12px_32px_-8px_rgba(14,165,233,0.28)]"
               >
                 <div className="flex items-center gap-4">
                   <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#1B1464_0%,#0EA5E9_100%)] font-display text-sm font-bold text-white shadow-[0_8px_20px_-8px_rgba(14,165,233,0.5)]">
@@ -129,7 +129,7 @@ export default function SchoolOverview() {
                     <Zap className="h-3 w-3" /> {t.xp} XP
                   </span>
                   <span className="inline-flex items-center gap-1 text-[color:var(--color-text-secondary)]">
-                    <Trophy className="h-3.5 w-3.5 text-[#FCD34D]" /> {t.wins}
+                    <Trophy className="h-3.5 w-3.5 text-[#38BDF8]" /> {t.wins}
                   </span>
                 </div>
               </div>
@@ -182,7 +182,7 @@ export default function SchoolOverview() {
             {weeklyWorkshops.map((w) => (
               <div
                 key={w.id}
-                className="rounded-2xl border border-[color:var(--color-border)] bg-white p-4 transition hover:border-[#BAE6FD]"
+                className="rounded-2xl border border-[#BAE6FD]/40 bg-white/90 p-4 transition hover:border-[#BAE6FD] hover:bg-white hover:shadow-[0_8px_24px_-8px_rgba(14,165,233,0.2)]"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[10px] uppercase tracking-wider text-[color:var(--color-accent)]">
@@ -198,7 +198,7 @@ export default function SchoolOverview() {
                 <p className="mt-0.5 text-xs text-[color:var(--color-text-secondary)]">
                   Led by {w.lead}
                 </p>
-                <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-[color:var(--color-surface)]">
+                <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-[#E0F2FE]/70">
                   <div
                     className="h-full rounded-full bg-[linear-gradient(90deg,#1B1464_0%,#0EA5E9_100%)] shadow-[0_0_10px_rgba(14,165,233,0.4)]"
                     style={{ width: `${(w.week / w.total) * 100}%` }}
@@ -226,7 +226,7 @@ export default function SchoolOverview() {
             {upcomingEvents.slice(0, 3).map((e) => (
               <div
                 key={e.id}
-                className="flex items-center justify-between rounded-2xl border border-[color:var(--color-border)] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#BAE6FD] hover:shadow-[0_8px_22px_-16px_rgba(14,165,233,0.4)]"
+                className="flex items-center justify-between rounded-2xl border border-[#BAE6FD]/40 bg-white/90 p-4 transition hover:-translate-y-0.5 hover:border-[#BAE6FD] hover:bg-white hover:shadow-[0_10px_28px_-8px_rgba(14,165,233,0.25)]"
               >
                 <div>
                   <span className="inline-flex items-center gap-1 rounded-full border border-[#BAE6FD] bg-[color:var(--color-accent-soft)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#075985]">
@@ -241,7 +241,7 @@ export default function SchoolOverview() {
                 </div>
                 <Link
                   href={e.registrationLink}
-                  className="inline-flex items-center gap-1 rounded-full border border-[color:var(--color-border)] px-3 py-1.5 text-xs font-semibold text-[color:var(--color-primary)] transition hover:border-[#BAE6FD] hover:bg-[color:var(--color-accent-soft)] hover:text-[#075985]"
+                  className="inline-flex items-center gap-1 rounded-full border border-[#BAE6FD]/60 bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#0369A1] transition hover:border-[#0EA5E9] hover:bg-[#E0F2FE] hover:shadow-[0_4px_12px_rgba(14,165,233,0.2)]"
                 >
                   Register <ArrowRight className="h-3.5 w-3.5" />
                 </Link>

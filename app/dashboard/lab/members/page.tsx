@@ -90,7 +90,7 @@ const members = [
 ];
 
 const levelStyle: Record<string, string> = {
-  Advisor: "border-[#FCD34D]/60 bg-[#FEF9C3] text-[#78350F]",
+  Advisor: "border-[#0EA5E9]/60 bg-[#E0F2FE] text-[#075985]",
   Lead: "border-[#BAE6FD] bg-[#E0F2FE] text-[#075985]",
   Core: "border-[color:var(--color-border)] bg-[color:var(--color-surface-alt)] text-[color:var(--color-primary-dark)]",
   Member: "border-[color:var(--color-border)] bg-white text-[color:var(--color-text-secondary)]",

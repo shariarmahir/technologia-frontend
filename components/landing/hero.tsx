@@ -25,18 +25,18 @@ const statCards = [
 
 const orderItems = [
   { label: "IEEE Paper — RF Circuit Analysis", status: "Verified", hex: "#10B981" },
-  { label: "IoT Smart-Home Kit + Firmware", status: "In Progress", hex: "#38BDF8" },
-  { label: "Brand Deck — TechNova Ltd.", status: "Submitted", hex: "#A78BFA" },
+  { label: "IoT Smart-Home Kit + Firmware", status: "In Progress", hex: "#FFD662" },
+  { label: "Brand Deck — TechNova Ltd.", status: "Submitted", hex: "#FFE48A" },
 ];
 
 function DashboardMockup({ className = "" }: { className?: string }) {
   return (
     <div className={`relative ${className}`}>
       {/* Glow halo */}
-      <div className="absolute inset-4 rounded-[32px] bg-[#0EA5E9]/20 blur-3xl pointer-events-none" />
+      <div className="absolute inset-4 rounded-[32px] bg-[#FFD662]/15 blur-3xl pointer-events-none" />
 
       {/* Card */}
-      <div className="relative overflow-hidden rounded-[24px] border border-white/15 bg-[#0D0D3A]/80 shadow-[0_32px_80px_-16px_rgba(14,165,233,0.45)] backdrop-blur-2xl">
+      <div className="relative overflow-hidden rounded-[24px] border border-white/15 bg-[#001A3E]/85 shadow-[0_32px_80px_-16px_rgba(0,83,156,0.5)] backdrop-blur-2xl">
         {/* macOS chrome */}
         <div className="flex items-center justify-between border-b border-white/8 px-4 py-3 sm:px-5 sm:py-3.5">
           <div className="flex items-center gap-1.5">
@@ -57,9 +57,9 @@ function DashboardMockup({ className = "" }: { className?: string }) {
           {/* Mini stat row */}
           <div className="grid grid-cols-3 gap-2 sm:gap-3">
             {[
-              { label: "Active", value: "12", color: "text-[#38BDF8]" },
+              { label: "Active", value: "12", color: "text-[#FFD662]" },
               { label: "Verified", value: "8", color: "text-[#34D399]" },
-              { label: "This week", value: "৳24k", color: "text-[#FBBF24]" },
+              { label: "This week", value: "৳24k", color: "text-[#FFD662]" },
             ].map((s) => (
               <div key={s.label} className="rounded-xl border border-white/8 bg-white/4 p-2.5 text-center sm:p-3">
                 <p className={`font-display text-base font-bold sm:text-lg ${s.color}`}>{s.value}</p>
@@ -99,14 +99,14 @@ function DashboardMockup({ className = "" }: { className?: string }) {
           <div className="rounded-xl border border-white/8 bg-white/4 p-3 sm:p-3.5">
             <div className="flex items-center justify-between text-[9px] sm:text-[10px]">
               <span className="text-white/50">Monthly goal</span>
-              <span className="font-mono font-semibold text-[#38BDF8]">78%</span>
+              <span className="font-mono font-semibold text-[#FFD662]">78%</span>
             </div>
             <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/8">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: "78%" }}
                 transition={{ duration: 1.2, ease: "easeOut", delay: 0.9 }}
-                className="h-full rounded-full bg-gradient-to-r from-[#0EA5E9] to-[#7DD3FC]"
+                className="h-full rounded-full bg-gradient-to-r from-[#FFD662] to-[#FFE48A]"
               />
             </div>
           </div>
@@ -118,7 +118,7 @@ function DashboardMockup({ className = "" }: { className?: string }) {
         initial={{ opacity: 0, scale: 0.85, y: 8 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.85 }}
-        className="absolute -bottom-4 -left-4 rounded-2xl border border-white/15 bg-[#0D0D3A]/90 px-3.5 py-2.5 shadow-[0_12px_32px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:-bottom-5 sm:-left-8 sm:px-4 sm:py-3"
+        className="absolute -bottom-4 -left-4 rounded-2xl border border-white/15 bg-[#001A3E]/90 px-3.5 py-2.5 shadow-[0_12px_32px_rgba(0,0,0,0.5)] backdrop-blur-xl sm:-bottom-5 sm:-left-8 sm:px-4 sm:py-3"
       >
         <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#34D399] sm:text-[9px]">Professor verified</p>
         <p className="mt-0.5 font-display text-[11px] font-semibold text-white sm:text-[12px]">Masum Hawlader · UAP</p>
@@ -129,9 +129,9 @@ function DashboardMockup({ className = "" }: { className?: string }) {
         initial={{ opacity: 0, scale: 0.85, y: -8 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 1.0 }}
-        className="absolute -right-3 top-6 rounded-2xl border border-[#0EA5E9]/30 bg-[#0EA5E9]/15 px-3 py-2.5 shadow-[0_12px_32px_rgba(14,165,233,0.3)] backdrop-blur-xl sm:-right-6 sm:top-10 sm:px-4 sm:py-3"
+        className="absolute -right-3 top-6 rounded-2xl border border-[#FFD662]/30 bg-[#FFD662]/12 px-3 py-2.5 shadow-[0_12px_32px_rgba(255,214,98,0.25)] backdrop-blur-xl sm:-right-6 sm:top-10 sm:px-4 sm:py-3"
       >
-        <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#7DD3FC] sm:text-[9px]">Delivered</p>
+        <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#FFE48A] sm:text-[9px]">Delivered</p>
         <p className="mt-0.5 font-display text-lg font-bold text-white sm:text-xl">2,400+</p>
       </motion.div>
     </div>
@@ -140,21 +140,21 @@ function DashboardMockup({ className = "" }: { className?: string }) {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#0A0930]">
+    <section className="relative overflow-hidden bg-[#001A3E]">
       {/* Background layers */}
       <div className="hero-mesh absolute inset-0" />
       <div className="hero-grid absolute inset-0 opacity-60" />
       <BackgroundCanvas />
 
-      {/* Orbs — scaled down on mobile */}
-      <div className="orb h-[300px] w-[300px] bg-[#0EA5E9]/30 left-[-80px] top-[-80px] animate-float-slow sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] lg:left-[-180px] lg:top-[-160px]" />
-      <div className="orb h-[260px] w-[260px] bg-[#2E21A3]/50 right-[-60px] top-[-40px] animate-float-slower sm:h-[380px] sm:w-[380px] lg:h-[500px] lg:w-[500px] lg:right-[-100px]" />
-      <div className="orb hidden h-[300px] w-[300px] bg-[#7C3AED]/25 left-[30%] bottom-[-80px] animate-float-slow sm:block" />
+      {/* Orbs */}
+      <div className="orb h-[300px] w-[300px] bg-[#FFD662]/20 left-[-80px] top-[-80px] animate-float-slow sm:h-[450px] sm:w-[450px] lg:h-[600px] lg:w-[600px] lg:left-[-180px] lg:top-[-160px]" />
+      <div className="orb h-[260px] w-[260px] bg-[#00539C]/50 right-[-60px] top-[-40px] animate-float-slower sm:h-[380px] sm:w-[380px] lg:h-[500px] lg:w-[500px] lg:right-[-100px]" />
+      <div className="orb hidden h-[300px] w-[300px] bg-[#FFD662]/15 left-[30%] bottom-[-80px] animate-float-slow sm:block" />
 
-      {/* Main content — 16:6 on desktop via min-h, fluid on smaller screens */}
+      {/* Main content */}
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-stretch px-5 sm:px-8 lg:min-h-[37.5vw] lg:max-h-[560px] lg:flex-row lg:items-center lg:gap-12 xl:gap-20">
 
-        {/* ── LEFT COLUMN ── */}
+        {/* LEFT COLUMN */}
         <div className="flex flex-1 flex-col items-start justify-center pt-12 pb-8 sm:pt-16 sm:pb-10 lg:py-14">
 
           {/* Eyebrow pill */}
@@ -165,8 +165,8 @@ export function Hero() {
             className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/20 bg-white/8 px-3.5 py-1.5 backdrop-blur-md sm:px-4"
           >
             <span className="relative flex h-2 w-2 flex-shrink-0">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#38BDF8] opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0EA5E9]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FFD662] opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#FFD662]" />
             </span>
             <span className="truncate font-mono text-[10px] uppercase tracking-[0.15em] text-white/85 sm:text-[11px] sm:tracking-[0.18em]">
               Bangladesh&rsquo;s academic + project delivery platform
@@ -182,7 +182,7 @@ export function Hero() {
           >
             We build the{" "}
             <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-[#38BDF8] via-[#7DD3FC] to-white bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FFD662] via-[#FFE48A] to-white bg-clip-text text-transparent">
                 work you need
               </span>
               <svg
@@ -194,8 +194,8 @@ export function Hero() {
                 <path d="M0 3 Q50 0 100 2 T200 2" stroke="url(#heroU)" strokeWidth="2.5" strokeLinecap="round" />
                 <defs>
                   <linearGradient id="heroU" x1="0" x2="200" y1="0" y2="0" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#38BDF8" />
-                    <stop offset="1" stopColor="#7DD3FC" stopOpacity=".4" />
+                    <stop stopColor="#FFD662" />
+                    <stop offset="1" stopColor="#FFE48A" stopOpacity=".4" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -239,7 +239,7 @@ export function Hero() {
                   key={a.label}
                   className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/6 px-3 py-1.5 text-[11px] font-medium text-white/65 backdrop-blur-md transition hover:bg-white/12 hover:text-white sm:text-[12px]"
                 >
-                  <Icon className="h-3 w-3 text-[#7DD3FC] sm:h-3.5 sm:w-3.5" />
+                  <Icon className="h-3 w-3 text-[#FFD662] sm:h-3.5 sm:w-3.5" />
                   {a.label}
                 </span>
               );
@@ -278,7 +278,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* ── RIGHT COLUMN — Dashboard Mockup — hidden on mobile, visible md+ ── */}
+        {/* RIGHT COLUMN — Dashboard Mockup */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -289,7 +289,7 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* ── Compact mockup on mobile — shown below text, above stats ── */}
+      {/* Compact mockup on mobile */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -299,7 +299,7 @@ export function Hero() {
         <DashboardMockup />
       </motion.div>
 
-      {/* ── Stats strip ── */}
+      {/* Stats strip */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -311,7 +311,7 @@ export function Hero() {
             const Icon = s.icon;
             return (
               <div key={s.v} className="flex items-center gap-3 px-5 py-4 sm:px-6 sm:py-5 lg:px-8">
-                <Icon className="h-4 w-4 flex-shrink-0 text-[#38BDF8]/70" />
+                <Icon className="h-4 w-4 flex-shrink-0 text-[#FFD662]/70" />
                 <div>
                   <p className="font-display text-lg font-semibold text-white sm:text-xl">{s.k}</p>
                   <p className="text-[9px] uppercase tracking-wider text-white/40 sm:text-[10px]">{s.v}</p>

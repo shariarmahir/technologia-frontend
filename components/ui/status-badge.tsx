@@ -25,8 +25,8 @@ const statusMap: Record<
   },
   in_progress: {
     label: "In Progress",
-    className: "bg-[#FEF3C7] text-[#B45309] border-[#FDE68A]",
-    dot: "bg-[#F59E0B]",
+    className: "bg-[#DBEAFE] text-[#1D4ED8] border-[#BFDBFE]",
+    dot: "bg-[#3B82F6]",
   },
   pending_review: {
     label: "Pending Review",

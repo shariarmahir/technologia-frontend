@@ -7,22 +7,22 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap font-display font-semibold tracking-[-0.01em] transition-all duration-300 ease-out disabled:pointer-events-none disabled:opacity-50 overflow-hidden isolate group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent)] focus-visible:ring-offset-2",
+  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap font-display font-semibold tracking-[-0.01em] transition-all duration-300 ease-out disabled:pointer-events-none disabled:opacity-50 overflow-hidden isolate group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)] focus-visible:ring-offset-2",
   {
     variants: {
       variant: {
         primary:
-          "text-white bg-[linear-gradient(135deg,#1B1464_0%,#2E21A3_45%,#0EA5E9_100%)] border border-[rgba(56,189,248,0.4)] shadow-[0_10px_30px_-8px_rgba(14,165,233,0.5)] hover:shadow-[0_18px_44px_-10px_rgba(14,165,233,0.65)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]",
+          "text-white bg-[linear-gradient(135deg,#001A3E_0%,#00539C_45%,#0066B8_100%)] border border-[rgba(255,214,98,0.4)] shadow-[0_10px_30px_-8px_rgba(0,83,156,0.5)] hover:shadow-[0_18px_44px_-10px_rgba(0,83,156,0.65)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]",
         sky:
-          "text-white bg-[linear-gradient(135deg,#0EA5E9_0%,#38BDF8_100%)] border border-[rgba(186,230,253,0.6)] shadow-[0_10px_30px_-8px_rgba(14,165,233,0.55)] hover:shadow-[0_18px_44px_-10px_rgba(14,165,233,0.75)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]",
+          "text-[#001A3E] bg-[linear-gradient(135deg,#FFD662_0%,#FFE48A_100%)] border border-[rgba(255,228,138,0.7)] shadow-[0_10px_30px_-8px_rgba(255,214,98,0.55)] hover:shadow-[0_18px_44px_-10px_rgba(255,214,98,0.75)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]",
         ghost:
           "text-white bg-white/5 border border-white/25 backdrop-blur-md hover:bg-white/12 hover:border-white/40 hover:-translate-y-0.5 active:translate-y-0",
         outline:
-          "text-[color:var(--color-primary-dark)] bg-white border border-[color:var(--color-border)] hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)] hover:shadow-[0_8px_22px_-12px_rgba(14,165,233,0.5)] hover:-translate-y-0.5",
+          "text-[color:var(--color-primary-dark)] bg-white border border-[color:var(--color-border)] hover:border-[color:var(--color-primary)] hover:text-[color:var(--color-primary)] hover:shadow-[0_8px_22px_-12px_rgba(0,83,156,0.4)] hover:-translate-y-0.5",
         subtle:
-          "text-[color:var(--color-primary)] bg-[color:var(--color-surface-alt)] hover:bg-white hover:shadow-[0_8px_22px_-12px_rgba(15,11,61,0.25)] border border-transparent hover:border-[color:var(--color-border)]",
+          "text-[color:var(--color-primary)] bg-[color:var(--color-surface-alt)] hover:bg-white hover:shadow-[0_8px_22px_-12px_rgba(0,58,110,0.25)] border border-transparent hover:border-[color:var(--color-border)]",
         link:
-          "text-[color:var(--color-accent)] hover:text-[color:var(--color-primary)] underline-offset-4 hover:underline px-0",
+          "text-[color:var(--color-primary)] hover:text-[color:var(--color-primary-dark)] underline-offset-4 hover:underline px-0",
       },
       size: {
         sm: "h-9 px-4 text-sm rounded-[10px]",
@@ -73,7 +73,7 @@ export function Button(props: ButtonProps) {
   const classes = cn(
     buttonVariants({ variant, size, glow }),
     glow &&
-      "after:absolute after:inset-0 after:-z-10 after:rounded-[inherit] after:bg-[radial-gradient(ellipse_at_center,rgba(14,165,233,0.55),transparent_70%)] after:blur-xl after:opacity-60 hover:after:opacity-100 after:transition-opacity",
+      "after:absolute after:inset-0 after:-z-10 after:rounded-[inherit] after:bg-[radial-gradient(ellipse_at_center,rgba(255,214,98,0.55),transparent_70%)] after:blur-xl after:opacity-60 hover:after:opacity-100 after:transition-opacity",
     className
   );
 

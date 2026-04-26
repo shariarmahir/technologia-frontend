@@ -6,7 +6,7 @@ import { upcomingEvents } from "@/lib/mock-data";
 const scopeTone = {
   international: "bg-[#FEE2E2] text-[#B91C1C] border-[#FECACA]",
   national: "bg-[#E0F2FE] text-[#075985] border-[#BAE6FD]",
-  zilla: "bg-[#FEF3C7] text-[#B45309] border-[#FDE68A]",
+  zilla: "bg-[#E0F2FE] text-[#0369A1] border-[#BAE6FD]",
   school: "bg-[#DCFCE7] text-[#065F46] border-[#BBF7D0]",
 };
 

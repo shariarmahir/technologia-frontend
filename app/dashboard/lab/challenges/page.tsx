@@ -20,7 +20,7 @@ import { labChallenges } from "@/lib/mock-data";
 
 const statusStyle: Record<string, { label: string; chip: string; dot: string }> = {
   open: { label: "Open", chip: "border-[#BAE6FD] bg-[#E0F2FE] text-[#075985]", dot: "bg-[#0EA5E9]" },
-  active: { label: "Active", chip: "border-[#FDE68A] bg-[#FEF3C7] text-[#B45309]", dot: "bg-[#F59E0B] animate-pulse" },
+  active: { label: "Active", chip: "border-[#BAE6FD] bg-[#E0F2FE] text-[#0369A1]", dot: "bg-[#0EA5E9] animate-pulse" },
   judging: { label: "Judging", chip: "border-[#FBCFE8] bg-[#FCE7F3] text-[#9D174D]", dot: "bg-[#DB2777]" },
   completed: { label: "Completed", chip: "border-[#BBF7D0] bg-[#DCFCE7] text-[#047857]", dot: "bg-[#10B981]" },
 };
@@ -151,14 +151,14 @@ export default function ChallengesPage() {
               transition={{ duration: 0.4, delay: i * 0.07 }}
               className={`relative overflow-hidden rounded-2xl border p-5 transition hover:-translate-y-0.5 ${
                 c.status === "active"
-                  ? "border-[#FDE68A] bg-white shadow-[0_14px_40px_-18px_rgba(245,158,11,0.35)]"
+                  ? "border-[#BAE6FD] bg-white shadow-[0_14px_40px_-18px_rgba(14,165,233,0.35)]"
                   : c.status === "completed"
                   ? "border-[color:var(--color-border)] bg-[color:var(--color-surface)]"
                   : "border-[color:var(--color-border)] bg-white hover:border-[#BAE6FD] hover:shadow-[0_10px_28px_-16px_rgba(14,165,233,0.4)]"
               }`}
             >
               {c.status === "active" && (
-                <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-[#F59E0B]/15 blur-3xl" />
+                <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-[#0EA5E9]/15 blur-3xl" />
               )}
 
               <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -166,7 +166,7 @@ export default function ChallengesPage() {
                   <span
                     className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl ${
                       c.status === "active"
-                        ? "bg-[#FEF3C7] text-[#B45309]"
+                        ? "bg-[#E0F2FE] text-[#0369A1]"
                         : c.status === "completed"
                         ? "bg-[#DCFCE7] text-[#047857]"
                         : "bg-[color:var(--color-accent-soft)] text-[color:var(--color-accent)]"

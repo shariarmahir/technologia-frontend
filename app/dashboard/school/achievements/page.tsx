@@ -30,7 +30,7 @@ const rankLadder = [
 ];
 
 const trophyColors = [
-  "from-[#FCD34D] to-[#F59E0B]",
+  "from-[#38BDF8] to-[#0EA5E9]",
   "from-[#E5E7EB] to-[#94A3B8]",
   "from-[#CD7F32] to-[#92400E]",
   "from-[#A78BFA] to-[#7C3AED]",
@@ -126,7 +126,7 @@ export default function AchievementShowcasePage() {
       <Card>
         <CardHeader className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
-            <Trophy className="h-4 w-4 text-[#F59E0B]" />
+            <Trophy className="h-4 w-4 text-[#0EA5E9]" />
             Trophy shelf
           </CardTitle>
           <span className="rounded-full bg-[color:var(--color-surface)] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-[color:var(--color-text-secondary)]">
@@ -148,7 +148,7 @@ export default function AchievementShowcasePage() {
                 <div
                   className={`relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br ${
                     trophyColors[i % trophyColors.length]
-                  } shadow-[0_10px_30px_-8px_rgba(245,158,11,0.5)]`}
+                  } shadow-[0_10px_30px_-8px_rgba(14,165,233,0.5)]`}
                 >
                   <div className="absolute inset-1 rounded-full border border-white/40" />
                   <Trophy className="relative h-9 w-9 text-white drop-shadow" />
@@ -176,7 +176,7 @@ export default function AchievementShowcasePage() {
             <div className="absolute -bottom-16 -left-10 h-52 w-52 rounded-full bg-[#7C3AED]/30 blur-3xl" />
             <div className="relative">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em]">
-                <Flame className="h-3 w-3 text-[#FCD34D]" />
+                <Flame className="h-3 w-3 text-[#38BDF8]" />
                 Team of the Month · April
               </span>
               <p className="mt-4 font-display text-2xl font-semibold">
@@ -204,7 +204,7 @@ export default function AchievementShowcasePage() {
                 Wearable badge — display on school dress
               </p>
               <div className="mt-3 inline-flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-3 py-2 backdrop-blur-md">
-                <Medal className="h-5 w-5 text-[#FCD34D]" />
+                <Medal className="h-5 w-5 text-[#38BDF8]" />
                 <span className="font-display text-sm font-semibold">
                   Winners Patch · DRMC / April
                 </span>
