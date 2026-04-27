@@ -1,47 +1,59 @@
 import { cn } from "@/lib/utils";
 
-export type OrderStatus =
-  | "requested"
-  | "assigned"
+export type AssignmentStatus =
+  | "posted"
+  | "bidding"
+  | "matched"
   | "in_progress"
-  | "pending_review"
-  | "submitted"
+  | "under_review"
+  | "revision"
   | "completed"
+  | "disputed"
   | "cancelled";
 
 const statusMap: Record<
-  OrderStatus,
+  AssignmentStatus,
   { label: string; className: string; dot: string }
 > = {
-  requested: {
-    label: "Requested",
-    className: "bg-[#F1F0FB] text-[#2E21A3] border-[#D6D1F5]",
-    dot: "bg-[#2E21A3]",
+  posted: {
+    label: "Posted",
+    className: "bg-[#F8F9FC] text-[#475569] border-[#E2E8F0]",
+    dot: "bg-[#94A3B8]",
   },
-  assigned: {
-    label: "Assigned",
+  bidding: {
+    label: "Bidding",
+    className: "bg-[#FFFBEB] text-[#92400E] border-[#FDE68A]",
+    dot: "bg-[#F59E0B]",
+  },
+  matched: {
+    label: "Matched",
     className: "bg-[#EEF4FF] text-[#1E40AF] border-[#C7D7FE]",
-    dot: "bg-[#1E40AF]",
+    dot: "bg-[#3B82F6]",
   },
   in_progress: {
     label: "In Progress",
     className: "bg-[#DBEAFE] text-[#1D4ED8] border-[#BFDBFE]",
-    dot: "bg-[#3B82F6]",
+    dot: "bg-[#2563EB]",
   },
-  pending_review: {
-    label: "Pending Review",
+  under_review: {
+    label: "Under Review",
     className: "bg-[#FCE7F3] text-[#9D174D] border-[#FBCFE8]",
     dot: "bg-[#DB2777]",
   },
-  submitted: {
-    label: "Submitted",
-    className: "bg-[#E0F2FE] text-[#075985] border-[#BAE6FD]",
-    dot: "bg-[#0284C7]",
+  revision: {
+    label: "Revision",
+    className: "bg-[#FFF7ED] text-[#C2410C] border-[#FED7AA]",
+    dot: "bg-[#EA580C]",
   },
   completed: {
     label: "Completed",
     className: "bg-[#DCFCE7] text-[#065F46] border-[#BBF7D0]",
     dot: "bg-[#10B981]",
+  },
+  disputed: {
+    label: "Disputed",
+    className: "bg-[#FEF3C7] text-[#92400E] border-[#FDE68A]",
+    dot: "bg-[#D97706]",
   },
   cancelled: {
     label: "Cancelled",
@@ -54,7 +66,7 @@ export function StatusBadge({
   status,
   className,
 }: {
-  status: OrderStatus;
+  status: AssignmentStatus;
   className?: string;
 }) {
   const s = statusMap[status];
@@ -71,3 +83,6 @@ export function StatusBadge({
     </span>
   );
 }
+
+// Backward-compatible alias
+export type OrderStatus = AssignmentStatus;

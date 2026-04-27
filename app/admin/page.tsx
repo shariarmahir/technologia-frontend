@@ -14,12 +14,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RevenueChart } from "@/components/charts/revenue-chart";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { Button } from "@/components/ui/button";
-import { orders, employees } from "@/lib/mock-data";
-import { formatCurrency } from "@/lib/utils";
+import { assignments, employees } from "@/lib/mock-data";
 
 export default function AdminOverview() {
-  const recent = orders.slice(0, 5);
-  const active = orders.filter(
+  const recent = assignments.slice(0, 5);
+  const active = assignments.filter(
     (o) => !["completed", "cancelled"].includes(o.status)
   ).length;
 
@@ -190,14 +189,14 @@ export default function AdminOverview() {
                       {o.client}
                     </td>
                     <td className="px-3 py-3.5 text-[color:var(--color-text-secondary)]">
-                      {o.assignedTo ?? (
+                      {o.worker ?? (
                         <span className="italic text-[color:var(--color-text-secondary)]/60">
-                          Unassigned
+                          Unmatched
                         </span>
                       )}
                     </td>
                     <td className="px-3 py-3.5 font-mono text-[color:var(--color-text-primary)]">
-                      {formatCurrency(o.budget)}
+                      ${o.budget}
                     </td>
                     <td className="px-3 py-3.5">
                       <StatusBadge status={o.status} />

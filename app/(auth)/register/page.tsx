@@ -22,11 +22,13 @@ import {
   EyeOff,
   Check,
   Phone,
+  BanknoteIcon,
+  Briefcase,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-type Role = "client" | "school" | "lab" | "admin";
+type Role = "client" | "worker" | "school" | "lab";
 
 const roles: {
   value: Role;
@@ -39,16 +41,31 @@ const roles: {
 }[] = [
   {
     value: "client",
-    title: "Student / Professional",
-    description: "Order academic work, track progress, pay via bKash or card.",
+    title: "International Student",
+    description: "Post assignments, get matched with expert Bangladeshi students, pay on delivery.",
     icon: GraduationCap,
     destination: "/dashboard/client",
     features: [
-      "Academic reports, theses & dissertations",
-      "IEEE publications & research papers",
-      "IoT, Arduino & embedded project delivery",
+      "Post any assignment — lab reports to IEEE papers",
+      "Matched with verified university students",
+      "Pay only after you approve the work",
       "Work verified by Asst. Prof. Masum Hawlader",
-      "Real-time order tracking & demo review",
+      "Real-time progress tracker & revision requests",
+    ],
+  },
+  {
+    value: "worker",
+    title: "Bangladeshi University Student",
+    description: "Earn real income by completing assignments for international students.",
+    icon: Briefcase,
+    destination: "/dashboard/worker",
+    badge: "Earn ৳",
+    features: [
+      "Browse assignments matched to your department",
+      "Bid or accept at your own price & timeline",
+      "Get paid via bKash within 48 hrs of approval",
+      "Build a portfolio of completed work",
+      "Top earners make ৳45,000+ per month",
     ],
   },
   {
@@ -80,27 +97,20 @@ const roles: {
       "Faculty advisor & member management",
     ],
   },
-  {
-    value: "admin",
-    title: "technoLOgia Admin",
-    description: "Internal console — manage orders, teams & revenue.",
-    icon: ShieldCheck,
-    destination: "/admin",
-    features: [
-      "Full order pipeline management",
-      "Employee workload & assignment",
-      "Revenue analytics & reporting",
-      "All client & school oversight",
-      "System configuration access",
-    ],
-  },
 ];
 
-const studentServices = [
-  { icon: FileText, label: "Academic Reports", sub: "Lab, assignment, thesis" },
+const clientBenefits = [
+  { icon: FileText, label: "Lab Reports", sub: "EEE, Chemistry, Physics" },
   { icon: BookOpen, label: "IEEE Papers", sub: "Research & publications" },
   { icon: Cpu, label: "IoT Projects", sub: "Arduino, ESP32, sensors" },
   { icon: Award, label: "Prof. Verified", sub: "UAP · EEE department" },
+];
+
+const workerBenefits = [
+  { icon: BanknoteIcon, label: "bKash Payouts", sub: "Within 48 hrs" },
+  { icon: GraduationCap, label: "Any Dept.", sub: "EEE, CSE, MBA…" },
+  { icon: Award, label: "Build Portfolio", sub: "Verified work samples" },
+  { icon: Briefcase, label: "Flexible Hours", sub: "Work at your pace" },
 ];
 
 const steps = ["Choose role", "Your details", "Launch"];
@@ -226,10 +236,7 @@ export default function RegisterPage() {
                       className="mt-2.5 space-y-1 overflow-hidden"
                     >
                       {r.features.map((f) => (
-                        <li
-                          key={f}
-                          className="flex items-center gap-1.5 text-[11px] text-[#003A6E]"
-                        >
+                        <li key={f} className="flex items-center gap-1.5 text-[11px] text-[#003A6E]">
                           <CheckCircle2 className="h-3 w-3 flex-shrink-0 text-[#00539C]" />
                           {f}
                         </li>
@@ -254,7 +261,7 @@ export default function RegisterPage() {
         })}
       </div>
 
-      {/* Student services info panel */}
+      {/* Context panel: client */}
       <AnimatePresence>
         {role === "client" && (
           <motion.div
@@ -265,20 +272,15 @@ export default function RegisterPage() {
             className="mt-4 rounded-2xl border border-[#FFD662]/30 bg-[linear-gradient(135deg,#FFFBEB_0%,#FFF8DC_100%)] p-4"
           >
             <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-[#003A6E]">
-              What&apos;s included · Student plan
+              What&apos;s included · Client plan
             </p>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {studentServices.map(({ icon: Icon, label, sub }) => (
-                <div
-                  key={label}
-                  className="flex flex-col items-center gap-1.5 rounded-xl border border-[#FFD662]/30 bg-white p-2.5 text-center"
-                >
+              {clientBenefits.map(({ icon: Icon, label, sub }) => (
+                <div key={label} className="flex flex-col items-center gap-1.5 rounded-xl border border-[#FFD662]/30 bg-white p-2.5 text-center">
                   <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[linear-gradient(135deg,#003A6E,#00539C)] text-white">
                     <Icon className="h-4 w-4" />
                   </span>
-                  <p className="text-[11px] font-semibold text-[color:var(--color-primary-dark)]">
-                    {label}
-                  </p>
+                  <p className="text-[11px] font-semibold text-[color:var(--color-primary-dark)]">{label}</p>
                   <p className="text-[10px] text-[color:var(--color-text-secondary)]">{sub}</p>
                 </div>
               ))}
@@ -286,10 +288,40 @@ export default function RegisterPage() {
             <div className="mt-3 flex items-start gap-2 rounded-xl border border-[#BBF7D0] bg-[#F0FDF4] px-3 py-2">
               <ShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#059669]" />
               <p className="text-[11px] leading-relaxed text-[#065F46]">
-                <span className="font-semibold">Quality guarantee</span> — All academic
-                work is verified by{" "}
-                <span className="font-semibold">Masum Hawlader</span>, Asst. Prof., EEE,
-                University of Asia Pacific.
+                <span className="font-semibold">Quality guarantee</span> — All work verified by{" "}
+                <span className="font-semibold">Masum Hawlader</span>, Asst. Prof., EEE, University of Asia Pacific.
+              </p>
+            </div>
+          </motion.div>
+        )}
+
+        {role === "worker" && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.32 }}
+            className="mt-4 rounded-2xl border border-[#FFD662]/40 bg-[linear-gradient(135deg,#001A3E_0%,#003A6E_100%)] p-4"
+          >
+            <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-[#FFD662]">
+              Worker benefits · Start earning today
+            </p>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {workerBenefits.map(({ icon: Icon, label, sub }) => (
+                <div key={label} className="flex flex-col items-center gap-1.5 rounded-xl border border-white/10 bg-white/10 p-2.5 text-center">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#FFD662] text-[#001A3E]">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <p className="text-[11px] font-semibold text-white">{label}</p>
+                  <p className="text-[10px] text-white/60">{sub}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 flex items-center gap-2 rounded-xl border border-[#FFD662]/30 bg-white/10 px-3 py-2">
+              <BanknoteIcon className="h-4 w-4 flex-shrink-0 text-[#FFD662]" />
+              <p className="text-[11px] text-white/80">
+                <span className="font-semibold text-[#FFD662]">University ID verification required</span>{" "}
+                — you&apos;ll upload your student ID after registration to unlock paid assignments.
               </p>
             </div>
           </motion.div>
@@ -302,77 +334,38 @@ export default function RegisterPage() {
           Your details
         </p>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <Field
-            label="Full name"
-            icon={<User className="h-4 w-4" />}
-            placeholder="Mahir Shariar"
-          />
-          <Field
-            label="Email"
-            icon={<Mail className="h-4 w-4" />}
-            type="email"
-            placeholder="you@example.com"
-          />
+          <Field label="Full name" icon={<User className="h-4 w-4" />} placeholder="Your full name" />
+          <Field label="Email" icon={<Mail className="h-4 w-4" />} type="email" placeholder="you@example.com" />
 
           {role === "client" && (
             <>
-              <Field
-                label="University / Institution"
-                icon={<Building2 className="h-4 w-4" />}
-                placeholder="University of Asia Pacific"
-                className="sm:col-span-2"
-              />
-              <Field
-                label="Phone (optional)"
-                icon={<Phone className="h-4 w-4" />}
-                type="tel"
-                placeholder="+880 1X XX XXX XXX"
-                className="sm:col-span-2"
-              />
+              <Field label="University / Institution" icon={<Building2 className="h-4 w-4" />} placeholder="University name" className="sm:col-span-2" />
+              <Field label="Country" icon={<Building2 className="h-4 w-4" />} placeholder="USA, UK, Australia…" />
+              <Field label="Phone (optional)" icon={<Phone className="h-4 w-4" />} type="tel" placeholder="+1 XXX XXX XXXX" />
+            </>
+          )}
+
+          {role === "worker" && (
+            <>
+              <Field label="University" icon={<Building2 className="h-4 w-4" />} placeholder="BUET, NSU, UAP…" className="sm:col-span-2" />
+              <Field label="Department" icon={<GraduationCap className="h-4 w-4" />} placeholder="EEE, CSE, MBA…" />
+              <Field label="bKash number" icon={<BanknoteIcon className="h-4 w-4" />} type="tel" placeholder="01XXXXXXXXX" />
             </>
           )}
 
           {role === "school" && (
             <>
-              <Field
-                label="School / College name"
-                icon={<Building2 className="h-4 w-4" />}
-                placeholder="Dhaka Residential Model College"
-                className="sm:col-span-2"
-              />
-              <Field
-                label="Location / District"
-                icon={<Building2 className="h-4 w-4" />}
-                placeholder="Dhaka, Bangladesh"
-              />
-              <Field
-                label="Contact phone"
-                icon={<Phone className="h-4 w-4" />}
-                type="tel"
-                placeholder="+880 1X XX XXX XXX"
-              />
+              <Field label="School / College name" icon={<Building2 className="h-4 w-4" />} placeholder="Dhaka Residential Model College" className="sm:col-span-2" />
+              <Field label="Location / District" icon={<Building2 className="h-4 w-4" />} placeholder="Dhaka, Bangladesh" />
+              <Field label="Contact phone" icon={<Phone className="h-4 w-4" />} type="tel" placeholder="+880 1X XX XXX XXX" />
             </>
           )}
 
           {role === "lab" && (
             <>
-              <Field
-                label="University"
-                icon={<Building2 className="h-4 w-4" />}
-                placeholder="BUET · IEEE Student Branch"
-                className="sm:col-span-2"
-              />
-              <Field
-                label="Lab / Program name"
-                icon={<FlaskConical className="h-4 w-4" />}
-                placeholder="Robotics Project Lab"
-              />
-              <Field
-                label="Faculty advisor email"
-                icon={<Mail className="h-4 w-4" />}
-                type="email"
-                placeholder="advisor@buet.ac.bd"
-              />
+              <Field label="University" icon={<Building2 className="h-4 w-4" />} placeholder="BUET · IEEE Student Branch" className="sm:col-span-2" />
+              <Field label="Lab / Program name" icon={<FlaskConical className="h-4 w-4" />} placeholder="Robotics Project Lab" />
+              <Field label="Faculty advisor email" icon={<Mail className="h-4 w-4" />} type="email" placeholder="advisor@buet.ac.bd" />
             </>
           )}
 
@@ -383,46 +376,29 @@ export default function RegisterPage() {
 
       {/* Terms */}
       <div className="mt-5 flex items-start gap-2.5 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3.5 text-xs text-[color:var(--color-text-secondary)]">
-        <input
-          type="checkbox"
-          className="mt-0.5 h-4 w-4 cursor-pointer rounded border-[color:var(--color-border)] accent-[#00539C]"
-          defaultChecked
-        />
+        <input type="checkbox" className="mt-0.5 h-4 w-4 cursor-pointer rounded border-[color:var(--color-border)] accent-[#00539C]" defaultChecked />
         <span className="leading-relaxed">
           I agree to the{" "}
-          <Link href="#" className="text-[color:var(--color-primary)] underline underline-offset-2">
-            Terms of Service
-          </Link>{" "}
+          <Link href="#" className="text-[color:var(--color-primary)] underline underline-offset-2">Terms of Service</Link>{" "}
           and{" "}
-          <Link href="#" className="text-[color:var(--color-primary)] underline underline-offset-2">
-            Privacy Policy
-          </Link>
-          .{role === "client" && (
-            <span className="text-[#003A6E]">
-              {" "}
-              Work I order will be quality-verified per technoLOgia&rsquo;s assurance flow.
-            </span>
+          <Link href="#" className="text-[color:var(--color-primary)] underline underline-offset-2">Privacy Policy</Link>.
+          {role === "worker" && (
+            <span className="text-[#003A6E]">{" "}I understand that payout is released only after client approval.</span>
+          )}
+          {role === "client" && (
+            <span className="text-[#003A6E]">{" "}Payment is held in escrow and released to the worker upon my approval.</span>
           )}
         </span>
       </div>
 
-      <Button
-        href={selected.destination}
-        variant="sky"
-        size="lg"
-        glow
-        className="mt-5 w-full"
-      >
+      <Button href={selected.destination} variant="sky" size="lg" glow className="mt-5 w-full">
         Create account · Enter {selected.title}
         <ArrowRight className="h-4 w-4" />
       </Button>
 
       <p className="mt-5 text-center text-sm text-[color:var(--color-text-secondary)]">
         Already have an account?{" "}
-        <Link
-          href="/login"
-          className="font-semibold text-[color:var(--color-primary)] transition hover:text-[color:var(--color-primary-light)]"
-        >
+        <Link href="/login" className="font-semibold text-[color:var(--color-primary)] transition hover:text-[color:var(--color-primary-light)]">
           Sign in →
         </Link>
       </p>
@@ -430,62 +406,27 @@ export default function RegisterPage() {
   );
 }
 
-function Field({
-  label,
-  icon,
-  className,
-  ...rest
-}: {
-  label: string;
-  icon: React.ReactNode;
-  className?: string;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "className">) {
+function Field({ label, icon, className, ...rest }: { label: string; icon: React.ReactNode; className?: string } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "className">) {
   return (
     <label className={cn("block", className)}>
-      <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color:var(--color-text-secondary)]">
-        {label}
-      </span>
+      <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color:var(--color-text-secondary)]">{label}</span>
       <div className="relative mt-1.5">
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[color:var(--color-text-secondary)]">
-          {icon}
-        </span>
-        <input
-          {...rest}
-          className="w-full rounded-xl border border-[color:var(--color-border)] bg-white py-3 pl-9 pr-3 text-sm outline-none transition focus:border-[#00539C] focus:bg-[#F7F9FC] focus:shadow-[0_0_0_4px_rgba(0,83,156,0.12)]"
-        />
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[color:var(--color-text-secondary)]">{icon}</span>
+        <input {...rest} className="w-full rounded-xl border border-[color:var(--color-border)] bg-white py-3 pl-9 pr-3 text-sm outline-none transition focus:border-[#00539C] focus:bg-[#F7F9FC] focus:shadow-[0_0_0_4px_rgba(0,83,156,0.12)]" />
       </div>
     </label>
   );
 }
 
-function PasswordField({
-  label,
-  placeholder,
-}: {
-  label: string;
-  placeholder?: string;
-}) {
+function PasswordField({ label, placeholder }: { label: string; placeholder?: string }) {
   const [show, setShow] = useState(false);
   return (
     <label className="block">
-      <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color:var(--color-text-secondary)]">
-        {label}
-      </span>
+      <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color:var(--color-text-secondary)]">{label}</span>
       <div className="relative mt-1.5">
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[color:var(--color-text-secondary)]">
-          <Lock className="h-4 w-4" />
-        </span>
-        <input
-          type={show ? "text" : "password"}
-          placeholder={placeholder ?? "••••••••"}
-          className="w-full rounded-xl border border-[color:var(--color-border)] bg-white py-3 pl-9 pr-10 text-sm outline-none transition focus:border-[#00539C] focus:bg-[#F7F9FC] focus:shadow-[0_0_0_4px_rgba(0,83,156,0.12)]"
-        />
-        <button
-          type="button"
-          onClick={() => setShow((s) => !s)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-[color:var(--color-text-secondary)] transition hover:text-[color:var(--color-primary)]"
-          aria-label={show ? "Hide password" : "Show password"}
-        >
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[color:var(--color-text-secondary)]"><Lock className="h-4 w-4" /></span>
+        <input type={show ? "text" : "password"} placeholder={placeholder ?? "••••••••"} className="w-full rounded-xl border border-[color:var(--color-border)] bg-white py-3 pl-9 pr-10 text-sm outline-none transition focus:border-[#00539C] focus:bg-[#F7F9FC] focus:shadow-[0_0_0_4px_rgba(0,83,156,0.12)]" />
+        <button type="button" onClick={() => setShow((s) => !s)} className="absolute right-3 top-1/2 -translate-y-1/2 text-[color:var(--color-text-secondary)] transition hover:text-[color:var(--color-primary)]" aria-label={show ? "Hide password" : "Show password"}>
           {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
         </button>
       </div>

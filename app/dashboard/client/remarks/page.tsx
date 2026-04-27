@@ -1,9 +1,9 @@
 import { MessageSquare, Send } from "lucide-react";
 import { PageHeader } from "@/components/layout/page-header";
 import { Card, CardContent } from "@/components/ui/card";
-import { orders } from "@/lib/mock-data";
+import { assignments } from "@/lib/mock-data";
 
-const threads = orders.slice(0, 3).map((o) => ({
+const threads = assignments.slice(0, 3).map((o) => ({
   order: o,
   messages: [
     {

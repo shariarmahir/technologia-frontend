@@ -4,8 +4,7 @@ import { Card } from "@/components/ui/card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { VerifiedBadge } from "@/components/ui/verified-badge";
-import { orders } from "@/lib/mock-data";
-import { formatCurrency } from "@/lib/utils";
+import { assignments } from "@/lib/mock-data";
 
 export default function ClientOrdersPage() {
   return (
@@ -39,7 +38,7 @@ export default function ClientOrdersPage() {
             </tr>
           </thead>
           <tbody>
-            {orders.map((o) => (
+            {assignments.map((o) => (
               <tr
                 key={o.id}
                 className="border-b border-[color:var(--color-border)]/60 last:border-0 hover:bg-[color:var(--color-surface)]"
@@ -55,11 +54,11 @@ export default function ClientOrdersPage() {
                     {o.verified && <VerifiedBadge compact />}
                   </div>
                 </td>
-                <td className="px-3 py-3.5 capitalize text-[color:var(--color-text-secondary)]">
-                  {o.category}
+                <td className="px-3 py-3.5 text-[color:var(--color-text-secondary)]">
+                  {o.subjectArea}
                 </td>
                 <td className="px-3 py-3.5 font-mono">
-                  {formatCurrency(o.budget)}
+                  ${o.budget} {o.currency}
                 </td>
                 <td className="px-3 py-3.5 text-[color:var(--color-text-secondary)]">
                   {o.deadline}

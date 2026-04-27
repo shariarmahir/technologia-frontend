@@ -25,7 +25,7 @@ export type NavItem = {
   badge?: string;
 };
 
-export type DashboardRole = "admin" | "client" | "school" | "lab";
+export type DashboardRole = "admin" | "client" | "worker" | "school" | "lab";
 
 export function DashboardShell({
   nav,
@@ -46,6 +46,7 @@ export function DashboardShell({
   const roleLabel = {
     admin: "Admin Console",
     client: "Student Dashboard",
+    worker: "Worker · Earn",
     school: "School Portal",
     lab: "University Lab",
   }[role];

@@ -27,14 +27,14 @@ export default function AnalyticsPage() {
           icon={Wallet}
         />
         <StatCard
-          label="Orders this month"
-          value={String(last.orders)}
+          label="Assignments this month"
+          value={String(last.assignments)}
           delta={{ value: "+13%", direction: "up" }}
           icon={Receipt}
         />
         <StatCard
-          label="Avg. order value"
-          value={`৳${Math.round(last.revenue / last.orders).toLocaleString()}`}
+          label="Avg. assignment value"
+          value={`৳${Math.round(last.revenue / last.assignments).toLocaleString()}`}
           delta={{ value: "+4%", direction: "up" }}
           icon={BarChart3}
         />
