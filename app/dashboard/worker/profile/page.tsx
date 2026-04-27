@@ -98,67 +98,101 @@ export default function WorkerProfilePage() {
       />
 
       {/* ── Profile hero card ─────────────────────────────────────────── */}
-      <div className="overflow-hidden rounded-3xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,26,62,0.45)]">
-        {/* Banner */}
-        <div className="relative h-52 w-full overflow-hidden bg-[#000D1F]">
-          {/* Base gradient */}
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,#000D1F_0%,#001A3E_35%,#002B6E_65%,#003A8E_100%)]" />
-          {/* Amber top-right orb */}
-          <div className="absolute -right-16 -top-16 h-72 w-72 rounded-full bg-[#FFD662] opacity-[0.18] blur-3xl" />
-          {/* Cyan mid orb */}
-          <div className="absolute left-1/3 top-0 h-56 w-56 rounded-full bg-[#0EA5E9] opacity-[0.10] blur-3xl" />
-          {/* Blue bottom-left orb */}
-          <div className="absolute -bottom-12 -left-12 h-48 w-48 rounded-full bg-[#00539C] opacity-[0.25] blur-2xl" />
-          {/* Subtle grid overlay */}
+      <div className="overflow-hidden rounded-3xl border border-[#00539C]/20 shadow-[0_40px_80px_-20px_rgba(0,26,62,0.55)]">
+
+        {/* ── Banner ── */}
+        <div className="relative h-64 w-full overflow-hidden bg-[#000C1F]">
+
+          {/* Deep radial base — light source from bottom-center */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_100%_at_50%_115%,#003A6E_0%,#000C1F_68%)]" />
+
+          {/* Amber corner glow */}
+          <div className="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-[#FFD662] opacity-[0.13] blur-3xl" />
+
+          {/* 3-D perspective grid floor */}
           <div
-            className="absolute inset-0 opacity-[0.07]"
+            className="absolute inset-x-0 bottom-0 h-48 opacity-[0.28]"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
+                "linear-gradient(rgba(0,83,156,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(0,83,156,0.7) 1px, transparent 1px)",
+              backgroundSize: "38px 38px",
+              transform: "perspective(200px) rotateX(52deg)",
+              transformOrigin: "bottom center",
             }}
           />
-          {/* Noise grain */}
-          <div
-            className="absolute inset-0 opacity-[0.04] mix-blend-overlay"
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-              backgroundSize: "160px 160px",
-            }}
+          {/* Fade grid at the top edge */}
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(to_bottom,#000C1F_0%,transparent_38%)]" />
+
+          {/* ── Radar rings — blue (slow) ── */}
+          {[0, 1, 2].map((i) => (
+            <motion.div
+              key={`br${i}`}
+              className="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#00539C]/50"
+              initial={{ width: 0, height: 0, opacity: 0.7 }}
+              animate={{ width: 300, height: 300, opacity: 0 }}
+              transition={{ repeat: Infinity, duration: 3.8, delay: i * 1.27, ease: "easeOut" }}
+            />
+          ))}
+
+          {/* ── Radar rings — amber (fast inner) ── */}
+          {[0, 1].map((i) => (
+            <motion.div
+              key={`ar${i}`}
+              className="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#FFD662]/35"
+              initial={{ width: 0, height: 0, opacity: 1 }}
+              animate={{ width: 100, height: 100, opacity: 0 }}
+              transition={{ repeat: Infinity, duration: 2.2, delay: i * 1.1, ease: "easeOut" }}
+            />
+          ))}
+
+          {/* Outer slow dashed orbit */}
+          <motion.div
+            className="absolute left-1/2 top-[44%] h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#00539C]/22"
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 22, ease: "linear" }}
           />
 
-          {/* Floating stat pills */}
-          <div className="absolute bottom-5 right-5 flex items-center gap-2">
-            {[
-              { label: "Total earned", value: "৳87.4k", color: "from-[#FFD662]/20 to-[#FFD662]/5 border-[#FFD662]/30 text-[#FFD662]" },
-              { label: "Rating", value: "4.9 ★", color: "from-white/10 to-white/5 border-white/15 text-white" },
-              { label: "Completed", value: "42 jobs", color: "from-[#10B981]/20 to-[#10B981]/5 border-[#10B981]/30 text-[#6EE7B7]" },
-            ].map((pill, i) => (
-              <motion.div
-                key={pill.label}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + i * 0.08, ease: "easeOut" }}
-                className={`hidden sm:flex flex-col items-center rounded-2xl border bg-gradient-to-b px-4 py-2.5 backdrop-blur-md ${pill.color}`}
-              >
-                <span className={`font-display text-lg font-bold leading-none ${pill.color.includes("FFD662") ? "text-[#FFD662]" : pill.color.includes("10B981") ? "text-[#6EE7B7]" : "text-white"}`}>
-                  {pill.value}
-                </span>
-                <span className="mt-0.5 font-mono text-[9px] uppercase tracking-widest text-white/40">
-                  {pill.label}
-                </span>
-              </motion.div>
-            ))}
-          </div>
+          {/* Inner counter-orbit with yellow travelling dot */}
+          <motion.div
+            className="absolute left-1/2 top-[44%] h-[140px] w-[140px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#FFD662]/22"
+            animate={{ rotate: -360 }}
+            transition={{ repeat: Infinity, duration: 14, ease: "linear" }}
+          >
+            <div className="absolute -top-[3px] left-1/2 h-[6px] w-[6px] -translate-x-1/2 rounded-full bg-[#FFD662] shadow-[0_0_12px_5px_rgba(255,214,98,0.6)]" />
+          </motion.div>
 
-          {/* Top-left role chip */}
-          <div className="absolute left-5 top-5">
+          {/* Blue travelling dot on outer orbit */}
+          <motion.div
+            className="absolute left-1/2 top-[44%] h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 22, ease: "linear" }}
+          >
+            <div className="absolute -top-[3px] left-1/2 h-[6px] w-[6px] -translate-x-1/2 rounded-full bg-[#0EA5E9] shadow-[0_0_10px_4px_rgba(14,165,233,0.55)]" />
+          </motion.div>
+
+          {/* Pulsing core dot */}
+          <motion.div
+            className="absolute left-1/2 top-[44%] -translate-x-1/2 -translate-y-1/2"
+            animate={{ scale: [1, 1.4, 1], opacity: [1, 0.65, 1] }}
+            transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+          >
+            <div className="h-3 w-3 rounded-full bg-[#FFD662] shadow-[0_0_20px_8px_rgba(255,214,98,0.45)]" />
+          </motion.div>
+
+          {/* Horizontal scan line */}
+          <motion.div
+            className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00539C]/55 to-transparent"
+            animate={{ y: [0, 256] }}
+            transition={{ repeat: Infinity, duration: 4.5, ease: "linear", repeatDelay: 0.6 }}
+          />
+
+          {/* Role chip — top left */}
+          <div className="absolute left-5 top-5 z-10">
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.05 }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 backdrop-blur-sm"
+              transition={{ delay: 0.08 }}
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-1.5 backdrop-blur-md"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FFD662] opacity-75" />
@@ -169,30 +203,59 @@ export default function WorkerProfilePage() {
               </span>
             </motion.div>
           </div>
+
+          {/* Stat pills — bottom right */}
+          <div className="absolute bottom-5 right-5 z-10 flex items-center gap-2">
+            {[
+              { label: "Total earned", value: "৳87.4k", color: "#FFD662" },
+              { label: "Rating", value: "4.9 ★", color: "#ffffff" },
+              { label: "Completed", value: "42 jobs", color: "#6EE7B7" },
+            ].map((pill, i) => (
+              <motion.div
+                key={pill.label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.14 + i * 0.08 }}
+                className="hidden sm:flex flex-col items-center rounded-2xl border border-white/10 bg-black/40 px-3.5 py-2 backdrop-blur-md"
+              >
+                <span className="font-display text-base font-bold leading-none" style={{ color: pill.color }}>
+                  {pill.value}
+                </span>
+                <span className="mt-0.5 font-mono text-[9px] uppercase tracking-widest text-white/35">
+                  {pill.label}
+                </span>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* Identity strip */}
+        {/* ── Identity strip ── */}
         <div className="relative bg-white px-6 pb-6 pt-0">
-          {/* Subtle top edge glow */}
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00539C]/20 to-transparent" />
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             {/* Avatar + identity */}
             <div className="-mt-12 flex items-end gap-5">
-              {/* Avatar with animated glow ring */}
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.12, type: "spring", stiffness: 280, damping: 22 }}
                 className="relative flex-shrink-0"
               >
-                {/* Outer glow ring */}
-                <div className="absolute -inset-1.5 rounded-[20px] bg-[linear-gradient(135deg,#FFD662_0%,#00539C_50%,#10B981_100%)] opacity-70 blur-sm" />
-                {/* Avatar */}
+                {/* Rotating conic-gradient glow ring */}
+                <motion.div
+                  className="absolute -inset-2 rounded-[22px]"
+                  style={{
+                    background: "conic-gradient(from 0deg, #FFD662, #00539C, #10B981, #FFD662)",
+                    filter: "blur(6px)",
+                    opacity: 0.65,
+                  }}
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+                />
                 <span className="relative flex h-24 w-24 items-center justify-center rounded-[18px] border-[3px] border-white bg-[linear-gradient(135deg,#001A3E_0%,#003A6E_55%,#00539C_100%)] text-3xl font-black tracking-tight text-white shadow-2xl">
                   NH
                 </span>
-                {/* Verified dot */}
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
@@ -211,9 +274,7 @@ export default function WorkerProfilePage() {
                 className="mb-1 min-w-0"
               >
                 <div className="flex flex-wrap items-center gap-2">
-                  <h2 className="font-display text-2xl font-black text-[#001A3E]">
-                    Nafis Hossain
-                  </h2>
+                  <h2 className="font-display text-2xl font-black text-[#001A3E]">Nafis Hossain</h2>
                   <span className="inline-flex items-center gap-1 rounded-full bg-[linear-gradient(135deg,#DCFCE7,#BBF7D0)] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#065F46] shadow-[0_0_0_1px_#BBF7D0]">
                     <ShieldCheck className="h-2.5 w-2.5" /> Verified
                   </span>
@@ -234,8 +295,6 @@ export default function WorkerProfilePage() {
                     Embedded Systems Lab
                   </span>
                 </div>
-
-                {/* Achievement chips */}
                 <div className="mt-3 flex flex-wrap gap-2">
                   {[
                     { label: "Top Earner", bg: "bg-[linear-gradient(135deg,#FEF3C7,#FDE68A)]", text: "text-[#78350F]", border: "border-[#FDE68A]" },
